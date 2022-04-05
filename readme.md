@@ -8,23 +8,15 @@ Instruction for the Reviewer
 
 # Mappls Map SDK - NPM Package for Angular/React/Ionic/Cordova - Alpha 1
 
-[![N|Solid](https://cdn.mapmyindia.com/mappls_web/maps_widget_v2/images/mappls.svg)](https://www.mapmyindia.com/api/)
-For full documentation contact MapmyIndia here:
-[MapmyIndia: apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com).
+[<img src="https://about.mappls.com/api/img/mapmyindia-api.png" height="40"/> </p>](https://about.mappls.com/api/)
+
+For full documentation contact Mappls here:
+[apisupport@mappls.com](mailto:apisupport@mappls.com).
+
 You can get your api key to be used in this document here: 
-[https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)
+[https://apis.mappls.com/console/](https://apis.mappls.com/console/)
 
  
-## Version History
-
-  
-| Version | Last Updated | Author |
-| ---- | ---- | ---- |
-| 0.2.1 | March 2022 | Mappls API Team ([BM](https://www.npmjs.com/~balmukand)) 
-
-  
-
-  
 
 ## Introduction
 This is a NPM based packaged SDK which can be installed directly through NPM.
@@ -34,8 +26,6 @@ Package name: mappls-maps
 
 ### Technologies
 Node.js, Angular, Javascript,React JS, Cordova, Ionic
-
-  
 
   
 
@@ -128,7 +118,7 @@ this.map_obj = data //callback function return map obj
 
 ## Features
 
-## # Component :  1) Map
+### Component :  1) Map
 `map` method needs four parameters to initialize a map.
 
 ```js
@@ -136,10 +126,12 @@ mapplsClassObject.map({ id:  "map", key:'token/rest-key', properties: {center: [
 ``` 
    
 ***i) Map div #id // with proper css width & height***
- `id:'mapid'` **(mandatory)**
+ 
+`id:'mapid'` **(mandatory)**
  
 ***ii) Token/Rest-Key to load the Map***
-`Key:'token/rest-key' your api map key from [Mapmyindia]   (https://www.mapmyindia.com/api/dashboard) `**(mandatory)**
+
+Key: `token/rest-key` your api map key from [Mapmyindia](https://apis.mappls.com/console/) **(mandatory)**
 
 ***iii) Map  Properties / Parameters***
 ```js
@@ -903,66 +895,43 @@ preserveViewport:true
 **ii. Polylines**
 **iii. Polygons**
 
-  
+<br>
 
-
-
-# END of documentation
-  
-
- 
-  
-
-![Email](https://cdn.mapmyindia.com/mappls_web/maps_widget_v2/images/mappls.svg)
+## Version History
 
   
+| Version | Last Updated | Author |
+| ---- | ---- | ---- |
+| 0.2.1 | March 2022 | Mappls API Team ([BM](https://github.com/balmukandpathak)) 
 
-Email us at [apisupport@mapmyindia.com](mailto:apisupport@mapmyindia.com)
+<br></br>
 
+### <-----end-of-document----->
   
+For any queries and support, please contact: 
 
-  
+[<img src="https://about.mappls.com/images/mappls-logo.svg" height="40"/> </p>](https://about.mappls.com/api/)
+Email us at [apisupport@mappls.com](mailto:apisupport@mappls.com)
 
-![](https://www.mapmyindia.com/api/img/icons/stack-overflow.png)
-
-  
-
-[Stack Overflow](https://stackoverflow.com/questions/tagged/mapmyindia-api)
-
-  
-
-Ask a question under the mapmyindia-api
-
-  
-
-  
 
 ![](https://www.mapmyindia.com/api/img/icons/support.png)
-
-  
-
-[Support](https://www.mapmyindia.com/api/index.php#f_cont)
-
-  
-
+[Support](https://about.mappls.com/contact/)
 Need support? contact us!
 
-  
+<br></br>
+<br></br>
 
-  
+[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mappls-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](https://about.mappls.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/Mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
-![](https://www.mapmyindia.com/api/img/icons/blog.png)
 
-  
 
-[Blog](http://www.mapmyindia.com/blog/)
+[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/Mapplsofficial)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/mappls)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mappls/)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/channel/UCAWvWsh-dZLLeUU7_J9HiOA)
 
-  
 
-Read about the latest updates & customer stories
 
-  
 
-  
+<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
 
-> � Copyright 2022. CE Info Systems Ltd. All Rights Reserved. | [Terms & Conditions](http://www.mapmyindia.com/api/terms-&-conditions)
+<div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://www.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://www.mappls.com/pdf/mappls-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://www.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://www.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
+
+<div align="center">Customer Care: +91-9999333223</div>
