@@ -144,9 +144,10 @@ export  default  App;
 
  - Components
  	- [Map](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md)
+		 - [Properties ](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#1-properties)
+		 - [Methods](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#2-map-methods)
 		 - [Events](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#3--map-events----listening-to-map-events)
-		 -  [Methods](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#2-map-methods)
-		 - [Properties ](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#1-usage)
+		 
 	 - [Remove Layer]()
 	 - [Markers](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md)
 		 - [Adding a marker](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#1--adding-a-marker)
