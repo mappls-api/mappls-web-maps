@@ -3,7 +3,7 @@
 # Mappls Web Maps - For Angular/ Ionic / Cordova
 # Map Components
 
-## 1. Usage 
+## 1. Properties 
 
 `map`  method - There are 4 mandatory parameters to use this method.
 
