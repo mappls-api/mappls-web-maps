@@ -54,7 +54,7 @@ For detailed understanding of the plugin, Let’s get started!
                     
             
                       }
-                      var nrObj= this.mapplsPluginObject.nearby(options,   callback_method );
+                      var nrObj= this.mapplsPluginObject.nearby(options, callback_method );
                       function callback_method(data: any){
                          console.log(data);
                      }
