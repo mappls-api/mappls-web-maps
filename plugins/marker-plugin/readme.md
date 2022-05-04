@@ -44,8 +44,10 @@ The above implementation uses Mappls Interactive Map JS library as map rendering
 ## Add the Marker plugin
 
 ```js
- var obj =  this.mapplsPluginObject.pinMarker( {map:this.mapObject, pin:'mmi000',popupHtml:"<h1>MMI</h1>"}, (e:any)=>{ console.log(e);  });
-```
+ var pinMarkerObj =  this.mapplsPluginObject.pinMarker( {map:this.mapObject, pin:'mmi000',popupHtml:"<h1>MMI</h1>"}, callback_method );
+                  function callback_method(data: any){
+                     console.log(data);
+                 }```
 
 #### Mandatory Parameters
 1. `map`: object > vector map or raster map object from respective Mappls Map JS.
@@ -108,7 +110,7 @@ The following are the sub-params for the object:
 `fitbounds()`
 
 ```js
-obj.fitbounds(options); //options are optional e.g. {padding:100}
+pinMarkerObj.fitbounds(options); //options are optional e.g. {padding:100}
 ```
 
 - `padding`: option can be used to setup a padding around the viewbound to fit the markers in.
@@ -118,7 +120,7 @@ obj.fitbounds(options); //options are optional e.g. {padding:100}
 `remove()`
 
 ```js
-obj.remove();
+pinMarkerObj.remove();
 ```
 
 ### 4. Method for adding event listeners on the marker
@@ -126,12 +128,12 @@ obj.remove();
 `addListener()`
 
 ```js
-obj.addListener(event,callback);
+pinMarkerObj.addListener(event,callback);
 ```
 
 Example: 
 ```js
-obj.addListener(‘click’,function(data){console.log(data);});
+pinMarkerObj.addListener(‘click’,function(data){console.log(data);});
 ```
 
 ### 5. Method for removing event listeners on the marker
@@ -139,12 +141,12 @@ obj.addListener(‘click’,function(data){console.log(data);});
 `removeListener()`
 
 ```js
-obj.removeListener(event);
+pinMarkerObj.removeListener(event);
 ```
 
 Example: 
 ```js
-obj.removeListener(‘click’);
+pinMarkerObj.removeListener(‘click’);
 ```
 
 ### 6. Method for setting icons for markers
@@ -152,13 +154,13 @@ obj.removeListener(‘click’);
 `setIcon()`
 
 ```js
-obj.setIcon(‘url.png’); //replaces all marker's icon.
+pinMarkerObj.setIcon(‘url.png’); //replaces all marker's icon.
 ```
 
 OR
 
 ```js
-obj.setIcon(‘url.png’,’mmi000’); //replaces single marker's icon for the provided eLoc.
+pinMarkerObj.setIcon(‘url.png’,’mmi000’); //replaces single marker's icon for the provided eLoc.
 
 ```
 
@@ -167,13 +169,13 @@ obj.setIcon(‘url.png’,’mmi000’); //replaces single marker's icon for the
 `setPopup()`
 
 ```js
-obj.setPopup({content:"<h1>Mappls</h1>"}); //replaces all marker's pop up values.
+pinMarkerObj.setPopup({content:"<h1>Mappls</h1>"}); //replaces all marker's pop up values.
 ```
 
 OR
 
 ```js
-obj.setPopup({content:"<h1>Agra</h1>",pin:'123zrr'}); //replaces single marker's popup value for the provided Pin.
+pinMarkerObj.setPopup({content:"<h1>Agra</h1>",pin:'123zrr'}); //replaces single marker's popup value for the provided Pin.
 ```
 
 <br>
