@@ -165,7 +165,7 @@ pinMarkerObj.setIcon(‘url.png’,’mmi000’); //replaces single marker's ico
 
 ```
 
-### 7. Method for setting pophtml for markers
+### 7. Method for setting popuphtml for markers
 #### Method
 `setPopup()`
 
