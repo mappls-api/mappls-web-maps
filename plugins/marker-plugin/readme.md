@@ -36,9 +36,10 @@ The SDK offers the following basic functionalities:
 
 ## Live Demo
 
-Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/Marker/mappls-marker-plugin) for assistance to create a sample implementation with your own keys.  
+Visit the following link for visiting the live demo:
 
-The above implementation uses Mappls Interactive Map JS library as map rendering framework showcasing integration of marker plugin.
+[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Marker/mappls-marker-plugin)
+
 
 
 ## Add the Marker plugin
