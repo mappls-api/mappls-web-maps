@@ -175,13 +175,13 @@ export  default  App;
 		 - [KML](https://github.com/mappls-api/mappls-web-maps/blob/main/components/overlays.md)
 		 - [Heat Map](https://github.com/mappls-api/mappls-web-maps/blob/main/components/heatmap.md)
  - Plugins
-	 - [Place Search]()
-	 - [Place Picker]()
-	 - [Nearby Search]()
-	 - [Directions]()
-	 - [getDistance]()
-	 - [marker-plugin]()
-	- [placeDetails-Plugin]()
+	 - [Place Search](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/placeSearch-plugin)
+	 - [Place Picker](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/placePicker-plugin)
+	 - [Nearby Search](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/nearbySearch-plugin)
+	 - [Directions](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/directions-plugin)
+	 - [getDistance](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/getDistance%20Method)
+	 - [marker-plugin](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/marker-plugin)
+	- [Eloc-Plugin](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/eLoc-plugin)
 	- [routeSummary Plugin]()
 
 
