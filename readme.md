@@ -2,10 +2,6 @@
 
 [![N|Solid](https://about.mappls.com/images/mappls-b-logo.svg)](https://www.mapmyindia.com/api/)
 
-  
-  
-  
-  
 
 ## Introduction
 
@@ -95,42 +91,58 @@ import { mappls } from  'mappls-web-maps'
 ```js
 import { Component, OnInit } from  '@angular/core';
 import { mappls } from  'mappls-web-maps'
-declare  var m:  any;
+  
 @Component({
 selector:  'app-root',
 template  :  '<div  id="map"  style="width: 99%; height: 99vh; background-color: white;"></div>',
 styleUrls: ['./app.component.css']
 })
+
 export  class  AppComponent  implements  OnInit {
 mapObject:  any;
 mapplsClassObject =  new  mappls();
+mapplsPluginObject =  new  mappls_plugin();
+
 mapProps = { center: [28.6330, 77.2194], traffic:  false, zoom:  4, geolocation:  false, clickableIcons:  false }
 
-ngOnInit(){
-// Initilize map
-this.mapplsClassObject.map({ id:  "map", key:"token/rest-key", properties:  this.mapProps}, (data:  any)=>{
-this.mapObject  = data //callback function return map object
-//load maps layers/components after map load, inside this callback (Recommended)
-});
-}
+    ngOnInit() {
+        this.mapplsClassObject.initialize("token",()=>{
+            this.mapObject  =  this.mapplsClassObject.Map({id:  "map", properties:  this.mapProps});
+
+            //load map layers/components after map load, inside this callback (Recommended)
+            this.mapObject.on("load", ()=>{
+            // Activites after mapload
+            })
+
+        });
+
+        }
+
 }
 ```
 
  -  #### React JS
 
 ```js
-import { mappls } from  'mappls-webb-maps';
-import  './App.css';
+import { mappls } from  'mappls-web-maps';
 function  App() {
 const  styleMap  = {width:  '99%', height:  '99vh', display:'inline-block'}
 const  mapProps  = { center: [28.6330, 77.2194], traffic:  false, zoom:  4, geolocation:  false, clickableIcons:  false }
 var mapObject ;
 var mapplsClassObject=  new  mappls();
-mapplsClassObject.map({id:"map",key:"1da08b6a-dc0b-4d81-915e-2995278be995", properties: mapProps},(data)=>{
-mapObject = data; //callback function return map obj
-//load map layers/components after map load, inside this callback (Recommanded)
-});
-  
+
+    mapplsClassObject.initialize("token",()=>{
+        mapObject = mapplsClassObject.Map({id:  "map", properties: mapProps});
+
+        //load map layers/components after map load, inside this callback (Recommended)
+        mapObject.on("load", ()=>{
+        // Activites after mapload
+        })
+
+    });
+
+
+
 return (
 <div>
 <div  id="map"  style={styleMap}></div>
