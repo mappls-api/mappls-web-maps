@@ -183,8 +183,7 @@ pinMarkerObj.setPopup({content:"<h1>Agra</h1>",pin:'123zrr'}); //replaces single
 <br>
 
 
-That's All ! Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/Marker/mappls-marker-plugin) for assistance to create a sample implementation with your own keys.  
-
+That's All ! 
 
 For any queries and support, please contact: 
 
