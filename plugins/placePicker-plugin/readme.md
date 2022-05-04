@@ -44,13 +44,17 @@ For detailed understanding of the plugin, Let’s get started!
 
 ```js
     var options={
-    map:this.maps,
-    callback:callback_method,
-    location:{lat:28.8787,lng:77.08888},
-    };
-    var picker= this.pluginObj.placePicker(options);
-    function callback_method(data: any) {
-    console.log(data);alert(JSON.stringify(data));  
+                  map:this.mapObject,
+                  callback:callback_method,
+                  location:{lat:28.8787,lng:77.08888},
+                  search:true,
+                  
+                  };
+                  var picker= this.mapplsPluginObject.placePicker(options, callback_method );
+                  function callback_method(data: any){
+                     console.log(data);
+                 }
+      
 ```
 
 #### Mandatory Parameters
@@ -78,7 +82,7 @@ Following is an example of calling Mappls.placePicker() method programmatically 
 
 ```js
 /*CALL for coordinates - LIKE THIS*/
-mappls.placePicker({location:{lat:28.9898,lng:77.9898}},callback);
+({location:{lat:28.9898,lng:77.9898}},callback);
 ```
 
 ### 3. Method for removing place picker plugin with callback from map
@@ -86,7 +90,7 @@ mappls.placePicker({location:{lat:28.9898,lng:77.9898}},callback);
 `remove()`
 
 ```js
-obj.remove();
+picker.remove();
 ```
 
 ### 4. Method for programmatically setting location within callback on map.
@@ -94,7 +98,7 @@ obj.remove();
 `setLocation()`
 
 ```js
-obj.setLocation({lat:28.42424,lng:77.232323});
+picker.setLocation({lat:28.42424,lng:77.232323});
 ```
 
 ### 5. Method for getting location data from Place Picker plugin.
@@ -107,7 +111,7 @@ As per the current status of the Place Picker plugin's UI (map view and placemen
 `getLocation()`
 
 ```js
-obj.getLocation();
+picker.getLocation();
 ```
 
 
@@ -115,12 +119,12 @@ obj.getLocation();
 
 ```js
 {	
-    area: "India", //country information
+        area: "India", //country information
 	city: "New Delhi", // city of the pinned place.
 	district: "South East Delhi District", // district of the pinned place.
 	formatted_address: "Industrial Estate Phase 1, New Delhi, Delhi, India", // complete formatted address of the pinned place.
-    houseName: "Equalisatcon Pump House", // house name of the pinned place.
-    houseNumber: "", // house number of the pinned place.
+        houseName: "Equalisatcon Pump House", // house name of the pinned place.
+        houseNumber: "", // house number of the pinned place.
 	lat: "28.5237002235929", // latitude of the pinned place as per input coordinates.
 	lng: "77.28024601936342", // longitude of the pinned place as per input coordinates.
 	locality: "Okhla Industrial Estate Phase 1", // locality number of the pinned place.
