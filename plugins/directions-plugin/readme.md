@@ -47,10 +47,15 @@ For detailed understanding of the plugin, Let’s get started!
 
 
 ```js
-  var direction_option = {map:this.mapObj,start:"28.545,77.545",end:{label:'India Gate, Delhi',geoposition:"1T182A"}}
-
-  this.pluginObj.direction
-  (direction_option);
+   var direction_option = {
+                      Resource: 'route_eta',
+                      annotations:"nodes,congestion",
+                      map:this.mapObject,start:"28.545,77.545",end:{label:'India Gate, Delhi',geoposition:"1T182A"},
+                  }
+                     this.mapplsPluginObject.direction(direction_option, callback_method );
+                     function callback_method(data: any){
+                        console.log(data);
+                    }
 ```
 
 ## Properties
