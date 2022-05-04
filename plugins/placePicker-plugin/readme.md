@@ -82,7 +82,7 @@ Following is an example of calling Mappls.placePicker() method programmatically 
 
 ```js
 /*CALL for coordinates - LIKE THIS*/
-({location:{lat:28.9898,lng:77.9898}},callback);
+this.mapplsPluginObject.placePicker({location:{lat:28.9898,lng:77.9898}},callback);
 ```
 
 ### 3. Method for removing place picker plugin with callback from map
