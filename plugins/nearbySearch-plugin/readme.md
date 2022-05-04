@@ -41,29 +41,23 @@ Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/N
 For detailed understanding of the plugin, Let’s get started!
 
 
-
-## Plugin's Configurations
-
-Adding the Nearby Search plugin in the script
-
-```js
-<script src="https://apis.mappls.com/advancedmaps/api/{token-OR-JWT-key}/map_sdk_plugins?v=3.0&libraries=nearby"></script>
-```
-
 ### 1. Add the Nearby Search plugin
 
 
 ```js
-    var options={
-      divId:'nearby_search',
-      map:this.maps,
-      keywords:'atm' ,
-      refLocation:"28.632735,77.219696",
-      fitbounds:true,
-      click_callback:function(d: any){if(d){var l="Name: "+d.placeName+"\nAddress: "+d.placeAddress+"\neLoc: "+d.eLoc; alert(l);}
-     }
-    }
-    var nr= this.pluginObj.nearby(options);
+     var options={
+                      divId:'nearby_search',
+                      map:this.mapObject,
+                      keywords:'atm' ,
+                      refLocation:"28.632735,77.219696",
+                      fitbounds:true,
+                    
+            
+                      }
+                      var nrObj= this.mapplsPluginObject.nearby(options,   callback_method );
+                      function callback_method(data: any){
+                         console.log(data);
+                     }
 ```
 
 #### Mandatory Parameters
@@ -137,19 +131,19 @@ OR
 Following is an example of calling mappls.nearby() method to get data from category and coordinates: 
 
 ```js
-var res=mappls.nearby({keywords:"atm",refLocation:"123ZRR"});
+var res= this.mapplsPluginObject.nearby(({keywords:"atm",refLocation:"123ZRR"});
 ```
 
 #### 2. Get data from Mappls Search category url
 
 ```js
-var res=mappls.nearby({hyperLink:'https://atlas.mapmyindia.com/api/places/nearby/json?explain&richData&&refLocation=28.61,77.23&keywords=FINATM'});
+var res= this.mapplsPluginObject.nearby(({hyperLink:'https://atlas.mapmyindia.com/api/places/nearby/json?explain&richData&&refLocation=28.61,77.23&keywords=FINATM'});
 ```
 
 #### 3. Get data from category & location selection UI
 
 ```js
-var res=mappls.nearby({divId:'nearby_divId',keywords:{'FINATM':'ATMs', 'FODCOF':'Restaurants'}});
+var res= this.mapplsPluginObject.nearby(({divId:'nearby_divId',keywords:{'FINATM':'ATMs', 'FODCOF':'Restaurants'}});
 ```
 This will place a selection of keywords and a location selection UI inside `divId`.
 
@@ -158,8 +152,7 @@ This will place a selection of keywords and a location selection UI inside `divI
 Use remove() method to remove markers from map.
 
 ```js
-var markers=res.markers();
-markers.remove();
+nrObj.remove();
 ```
 
 ### Add Event to Markers
@@ -167,7 +160,7 @@ markers.remove();
 Use addListener() method to associate events to markers.
 
 ```js
-markers.addListener('click',function(data){ console.log(data);});
+nrObj.addListener('click',function(data){ console.log(data);});
 ```
 
 
