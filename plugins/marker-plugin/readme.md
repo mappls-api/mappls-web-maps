@@ -47,7 +47,8 @@ The above implementation uses Mappls Interactive Map JS library as map rendering
  var pinMarkerObj =  this.mapplsPluginObject.pinMarker( {map:this.mapObject, pin:'mmi000',popupHtml:"<h1>MMI</h1>"}, callback_method );
                   function callback_method(data: any){
                      console.log(data);
-                 }```
+                 }
+ ```
 
 #### Mandatory Parameters
 1. `map`: object > vector map or raster map object from respective Mappls Map JS.
