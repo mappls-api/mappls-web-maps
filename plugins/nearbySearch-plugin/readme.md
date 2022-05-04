@@ -33,12 +33,12 @@ The SDK offers the following basic functionalities:
 4. Include the Nearby Search Plugin with or without an interactive Map component.
 
 
-## Sample Implementation
+## Live Demo
 
+Visit the following link for visiting the live demo:
 
-Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/Nearbysearch/mappls-nearbysearch-plugin) for assistance to create a sample implementation with your own keys. 
+[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Nearbysearch/mappls-nearbysearch-plugin)
 
-For detailed understanding of the plugin, Let’s get started!
 
 
 ### 1. Add the Nearby Search plugin
@@ -164,7 +164,7 @@ nrObj.addListener('click',function(data){ console.log(data);});
 ```
 
 
-That's All !  Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/Nearbysearch/mappls-nearbysearch-plugin) for assistance to create a sample implementation with your own keys. 
+That's All !  
 
 
 For any queries and support, please contact: 
