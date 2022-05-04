@@ -33,10 +33,12 @@ The SDK offers the following basic functionalities:
 3. Customizable markers
 4. Remove markers from map.
 
-## Sample Implementation
+## Live Demo
 
+Visit the following link for visiting the live demo:
 
-Visit the [samples](https://github.com/mappls-api/mappls-web-plugins/tree/main/eLoc-plugin) for assistance to create a sample implementation with your own keys. 
+[LIVE DEMO](https://github.com/mappls-api/mappls-web-plugins/tree/main/eLoc-plugin)
+
 
 For detailed understanding, Let’s get started!
 
