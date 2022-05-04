@@ -32,22 +32,22 @@ The method offers the following basic functionalities:
 
 For detailed understanding, Let’s get started!
 
-## Live Demo
-
-Visit the following link for visiting the live demo:
-
-[LIVE DEMO](https://www.mapmyindia.com/api/advanced-maps/doc/sample/mapmyindia-maps-distance-matrix-plugin)
 
 
 ## Implementation
 
 ```js
-     this.pluginObj.getDistance({
-            coordinates: "mmi000;123zrr",
-            callback: function(data: any) {
-                console.log(data);
-            }
-        });
+       this.mapplsPluginObject.getDistance({
+                      map:this.mapObject,
+                      coordinates: "mmi000;123zrr",
+                      eloc:['mmi000','123zrr'],
+                      popupHtml:["<h1>MMI</h1>”,”<h1>Agra</h1>"],
+                      html:["1","2"],
+                      icon:{url:"2.png",width:30,height:45}
+                  }, callback_method );
+                  function callback_method(data: any){
+                     console.log(data);
+                 }
 ```
 
 ## Properties
@@ -69,29 +69,6 @@ Visit the following link for visiting the live demo:
 E.g. 0;1 means that 0th and 1st pairs are source points. Default value is 0. The indexes must be semi-colon separated. e.g: 0;1;2;...
 6. `destinations` (string): To specify which of the coordinates/eLoc supplied in the method are to be treated as destination position for 'many to many' distance matrix calculation. The input is indicative of that coordinate/eLoc's index. 
 E.g. 2;3 means that 0th and 1st pairs are destination points. Default value is all. The indexes must be comma separated. e.g: 3;4;5;...
-
-## Example
-```js
-mappls.getDistance({
-    coordinates: "mmi000;123zrr",
-    callback: function(data) {
-        console.log(data);
-    }
-});
-```
-
-### Sample code Snippet
-
-```js
-/*CALLING DISTANCE*/
-mappls.getDistance({
-    coordinates: "518NSV;123ZRR;28.9797,77.6763"
-}, function(data) {
-    resdiv.innerHTML = JSON.stringify(data).replace(/{/g, '<br>{<br>').replace(/}/g, '<br>}<br>').replace(/","/g, '",<br>"');
-});
-```
-
-
 
 
 That's All !
