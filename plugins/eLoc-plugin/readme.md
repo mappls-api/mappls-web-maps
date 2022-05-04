@@ -43,11 +43,14 @@ For detailed understanding, Let’s get started!
 ## Add the Place Details plugin
 
 ```js
-   var elocObj =  this.mapplsPluginObject.getPinDetails({ map: this.mapObject, pin:"mmi000"}, (e:any)=>{ console.log(e);  });  
+    var elocObj =  this.mapplsPluginObject.getPinDetails({ map: this.mapObject, pin:"mmi000"}, callback_method );
+                  function callback_method(data: any){
+                     console.log(data);
+                 }
 ```
 
 #### Mandatory Parameters
-1. `getPinDetails`: The pin (Mappls Pin/Eloc) whose details are required.
+1. `pin`: The pin (Mappls Pin/Eloc) whose details are required.
 2. `callback`: to return data to a specified callback method.
 
 
@@ -65,19 +68,19 @@ For detailed understanding, Let’s get started!
 ### 3. Method to remove the markers with callback populated by Place Details Plugin
 
 ```js
-pinObj.remove();
+elocObj.remove();
 ```
 
-### 4. Method to set up the div content for populating details from getEloc() plugin
+### 4. Method to set up the div content for populating details from getPinDetails() plugin
 
 ```js
-pinObj.setDivContent(“Div html);
+elocObj.setDivContent(“Div html);
 ```
 ### 5. Method to set up the pop up content on marker as html.
 For Eg:
 
 ```js
-pinObj.setPopup({content:"<h1>Hello Mappls</h1>"});
+elocObj.setPopup({content:"<h1>Hello Mappls</h1>"});
 ```
 
 
