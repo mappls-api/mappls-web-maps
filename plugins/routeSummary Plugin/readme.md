@@ -23,15 +23,14 @@ Visit the following link for visiting the live demo:
 ## Implementation
 ```js
 let routeOptions = {
-       map:this.mapObject,
-      routeId:"2959a08b-c9d1-11ec-8ea8-357ba8c4c378_Chrome:1010495141",
-      index:0
-   }
-   this.mapplsPluginObject.routeSummary(routeOptions,callback);
-      
-      function callback(data: any){
-            console.log(data);
-      }
+                      map:this.mapObject,
+                      routeId:"2959a08b-c9d1-11ec-8ea8-357ba8c4c378_Chrome:1010495141",
+                      index:0
+                  }
+                  this.mapplsPluginObject.routeSummary(routeOptions,callback_method );
+                  function callback_method(data: any){
+                     console.log(data);
+                 }
 ```
 
 ## Properties
@@ -52,23 +51,6 @@ let routeOptions = {
 
  - isGroup (Integer) : sGroup, Set to 1, if user needs parentCategory wise grouped data.
 
-
-## Example
-
-
- ```js
-mappls.routeSummary({
-            map:map,
-            routeId:routeId,
-            index:0 , 
-            categories:"",
-            nodeId:"",
-            isGroup:0
-        },
-        function(data){
-            console.log(data);
-        });
- ```
 
 <br>
 That's All !
