@@ -40,20 +40,11 @@ Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/M
 
 The above implementation uses Mappls Interactive Map JS library as map rendering framework showcasing integration of marker plugin.
 
-## Implementation
 
-### Adding the Marker plugin script
-
-#### Script URL
+## Add the Marker plugin
 
 ```js
-<script src="https://apis.mappls.com/advancedmaps/api/{token-OR-JWT-key}/map_sdk_plugins?v=3.0"></script>
-```
-
-### 1. Add the Marker plugin
-
-```js
-var obj =  this.pluginObj.elocMarker({map:this.maps,eloc:'mmi000',popupHtml:"<h1>MMI</h1>"});
+ var obj =  this.mapplsPluginObject.pinMarker( {map:this.mapObject, pin:'mmi000',popupHtml:"<h1>MMI</h1>"}, (e:any)=>{ console.log(e);  });
 ```
 
 #### Mandatory Parameters
