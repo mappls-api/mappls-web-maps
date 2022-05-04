@@ -34,13 +34,11 @@ The plugin offers the following basic functionalities:
 
 For details, please contact apisupport@mappls.com.
 
-## Sample Implementation
+## Live Demo
 
+Visit the following link for visiting the live demo:
 
-Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/Direction/mappls-direction-plugin) for assistance to create a sample implementation with your own keys. 
-
-For detailed understanding of the plugin, Let’s get started!
-
+[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Direction/mappls-direction-plugin)
 
 
 ## Add the Direction plugin
