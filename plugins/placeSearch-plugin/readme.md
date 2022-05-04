@@ -41,26 +41,30 @@ Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/P
 For detailed understanding of the plugin, Let’s get started!
 
 
-## Plugin's Configurations
-
-Adding the Nearby Search plugin in the script
-
-```js
-<script src="https://apis.mappls.com/advancedmaps/api/{token-OR-JWT-key}/map_sdk_plugins?v=3.0&libraries=search"></script>
-```
 
 ### 1. Add the Place Search plugin
 
 ```js
       var placeOptions={
-        location:[28.61, 77.23]};
-        
-    this.pluginObj.search("agra",placeOptions,callback);
-
-    function callback(e: any)
-    {    
-        console.log(e);}
-    }
+                      location:[28.61, 77.23],
+                      geolocation:true,
+                      pod:'City',
+                      bridge:true,
+                      tokenizeAddress:true,
+                      filter:'cop:9QGXAM',
+                      hyperLocal:true,
+                      distance:true,
+                      width:300,
+                      height:300,
+                      clearButton:false, //to hide cross button, which is right side of search input
+                      blank_callback:function(){console.log("called when click on cross button or input value become blank");}
+                      
+                  };
+      
+                  var search = this.mapplsPluginObject.search("agra", placeOptions,callback_method );
+                  function callback_method(data: any){
+                     console.log(data);
+                 }
 ```
 
 #### Mandatory Parameters
@@ -101,21 +105,8 @@ Following is an example of calling Mappls.search() method programmatically for a
 
 ```js
 /*CALL for fix text - LIKE THIS*/
-    new mappls.search("agra",placeOptions,callback);
+    var search = this.mapplsPluginObject.search("agra",placeOptions,callback);
 ```
-
-### Other Methods
-
-**setToken("token")** - This method is used when you receive a callback of token error. To set new token following method should be refered.
-
-For Eg: if the users receives an error in callback like {error: "error-Passport invalid-Passport seems to be invalid or not active anymore-responsecode:401"}, 
-use
-
-```js
-mappls.setToken();
-``` 
-If this returns true, then the token is placed successfuly, otherwise token is not valid.
-
 
 
 That's All ! Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/Placesearch/mappls-placesearch-plugin) for assistance to create a sample implementation with your own keys. 
