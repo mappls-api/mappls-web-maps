@@ -109,7 +109,7 @@ Following is an example of calling Mappls.search() method programmatically for a
 ```
 
 
-That's All ! Visit the [samples](https://about.mappls.com/api/web-sdk/vector-plugin-example/Placesearch/mappls-placesearch-plugin) for assistance to create a sample implementation with your own keys. 
+That's All ! 
 
 
 For any queries and support, please contact: 
