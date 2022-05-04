@@ -43,11 +43,7 @@ For detailed understanding, Let’s get started!
 ## Add the Place Details plugin
 
 ```js
-   var elocObj =  this.pluginObj.getPinDetails({ map: this.maps, callback: PinData });  
-  function PinData(data: any) 
-  { 
-      console.log(data); 
-  }
+   var elocObj =  this.mapplsPluginObject.getPinDetails({ map: this.mapObject, pin:"mmi000"}, (e:any)=>{ console.log(e);  });  
 ```
 
 #### Mandatory Parameters
