@@ -280,8 +280,9 @@ _`Example Usage`_
     -   No camera transitions are in progress        
     -   All currently requested tiles have loaded        
     -   All fade/transition animations have completed
+    
+    _`Example Usage`_
 
-_`Example Usage`_
     -   **Angular / Cordova / Ionic**
         ```js
         this.mapObject.addListener('idle', function () { console.log('idle');});
