@@ -36,7 +36,7 @@ mapProps = { center: [28.6330, 77.2194], traffic:  false, zoom:  4, geolocation:
     
       ngOnInit() {
 
-            this.mapplsClassObject.initialize("mamta's special token for exclusive map styles",()=>{
+            this.mapplsClassObject.initialize("access_token",()=>{
                   this.mapObject  =  this.mapplsClassObject.Map({id:  "map", properties:  this.mapProps});
       
                   //load map layers/components after map load, inside this callback (Recommended)
