@@ -1,6 +1,6 @@
 [<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://www.mapmyindia.com/api)
 
-# Place Details Plugin for Mappls Web Maps
+# Direction Plugin for Mappls Web Maps
 
 **Easy To Integrate Routing APIs & Map SDKs For Web Applications**
 
