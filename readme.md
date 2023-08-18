@@ -1,4 +1,4 @@
-[<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://www.mapmyindia.com/api)
+[<img src="https://cdn-public.mappls.com/about-mappls/assets/images/mappls-logo.svg" height="60"/> </p>](https://about.mappls.com/api/maps)
 
 ## Introduction
 
@@ -10,7 +10,7 @@ search and routes on map, to your web or mobile applications.
 
 Create your own **Angular/React/Ionic/Cordova Based native app** powered by Mappls Maps and deploy them to various platforms be it **web** or native **mobile** platforms.
 
-## **Package name** : mappls-web-maps
+### **Package name** : mappls-web-maps
 
 # Sign up for Mappls
 
@@ -48,11 +48,11 @@ npm  i  mappls-web-maps
 - **Angular** : Import mappls class from `mappls-web-maps` package i.e. `app.component.ts` ( or other component of your use case ) .
 
 	```js
-	import { mappls } from 'mappls-web-maps';
+	import { mappls, mappls_plugin } from 'mappls-web-maps';
 	```
 -  **React JS** : Import mappls class from "mappls-web-maps" package inside app.js ( or other component of your use case ).
 	```js
-	import { mappls } from  'mappls-web-maps'
+	import { mappls, mappls_plugin } from  'mappls-web-maps'
 	```
 
 ## Usage
@@ -63,7 +63,7 @@ npm  i  mappls-web-maps
 
 	```js
 	import { Component, OnInit } from  '@angular/core';
-	import { mappls } from  'mappls-web-maps'
+	import { mappls, mappls_plugin } from  'mappls-web-maps'
 	
 	@Component({
 	selector:  'app-root',
@@ -88,21 +88,19 @@ npm  i  mappls-web-maps
 				})
 
 			});
-
-			}
-
-	}
+		}
 	```
 
  -  **React JS**
 
 	```js
-	import { mappls } from  'mappls-web-maps';
+	import { mappls, mappls_plugin} from  'mappls-web-maps';
 	function  App() {
 	const  styleMap  = {width:  '99%', height:  '99vh', display:'inline-block'}
 	const  mapProps  = { center: [28.6330, 77.2194], traffic:  false, zoom:  4, geolocation:  false, clickableIcons:  false }
 	var mapObject ;
 	var mapplsClassObject=  new  mappls();
+	var mapplsPluginObject =  new  mappls_plugin();
 
 		mapplsClassObject.initialize("token",()=>{
 			mapObject = mapplsClassObject.Map({id:  "map", properties: mapProps});
@@ -168,7 +166,9 @@ Email us at [apisupport@mappls.com](mailto:apisupport@mappls.com)
 
 
 ![](https://www.mapmyindia.com/api/img/icons/support.png)
+
 [Support](https://about.mappls.com/contact/)
+
 Need support? contact us!
 
 <br></br>
@@ -183,7 +183,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
+<div align="center">&#169; Copyright 2023 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://about.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://about.mappls.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://about.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://about.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 
