@@ -21,9 +21,10 @@ Before using the Plugin in the your solution, please ensure that the related acc
 
 ## Document Version History
 
-| Version | Last Updated | Author |
+| Version | Remarks | Author |
 | ---- | ---- | ---- |
-| 3.0 | 22 April 2022 | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Added | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Update |SDK Product Team ([PK](https://github.com/prabhjot729/))|
 
 
 
@@ -49,12 +50,80 @@ Visit the following link for visiting the live demo:
 For detailed understanding, Let’s get started!
 
 ## Add the Place Details plugin
+### Implementation
+
+## React JS
+
 
 ```js
-    var getPinDetailsObj =  this.mapplsPluginObject.getPinDetails({ map: this.mapObject, pin:"mmi000"}, callback_method );
-                  function callback_method(data: any){
-                     console.log(data);
-                 }
+import { mappls } from "mappls-web-maps";
+import { mappls_plugin } from "mappls-web-maps";
+function App() {
+ 
+  var mapplsClassObject = new mappls();
+  var mapplsPluginObject = new mappls_plugin();
+
+  const loadObject = {
+    map: false,
+    plugins: ["placeDetails"],
+  };
+
+  mapplsClassObject.initialize(
+    "<-----add token here--->",
+    loadObject,
+    () => {
+      var elocObj = mapplsPluginObject.getPinDetails(
+        { pin: "mmi000" },
+        (e) => {
+          console.log(e);
+        }
+      );
+    }
+  );
+
+  return true;
+}
+export default App;
+
+```
+## Angular
+```js
+import { Component, OnInit } from '@angular/core';
+  import { mappls, mappls_plugin } from 'mappls-web-maps';
+  
+  @Component({
+    selector: 'app-root',
+    template:'',
+    styleUrls: ['./app.component.css'],
+  })
+  export class AppComponent implements OnInit {
+    mapplsClassObject = new mappls();
+    mapplsPluginObject = new mappls_plugin();
+  
+  
+    ngOnInit() {
+      const loadObject = {
+        map: false,
+        plugins: ['getPinDetails'],
+      };
+  
+      this.mapplsClassObject.initialize(
+        '<----- Add your token here ------>',
+        loadObject,
+        () => {
+  
+            var elocObj = this.mapplsPluginObject.getPinDetails(
+              { pin: 'mmi000' },
+              (e: any) => {
+                console.log(e);
+              }
+            );
+  
+        }
+      );
+    }
+  }
+
 ```
 
 #### Mandatory Parameters
@@ -118,7 +187,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
+<div align="center">&copy Copyright 2023 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://about.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://about.mappls.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://about.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://about.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 
