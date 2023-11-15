@@ -20,9 +20,10 @@ Before using the Plugin in the your solution, please ensure that the related acc
 
 ## Document Version History
 
-| Version | Last Updated | Author |
+| Version | Remarks | Author |
 | ---- | ---- | ---- |
-| 3.0 | 22 April 2022 | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Added | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Update |SDK Product Team ([PK](https://github.com/prabhjot729/))|
 
 
 ## Introduction
@@ -46,32 +47,126 @@ Visit the following link for visiting the live demo:
 
 
 
-### 1. Add the Place Search plugin
+###  Add the Place Search plugin
+
+### Implementation
+
+## React
 
 ```js
-var placeOptions = 
-{
-    location:[28.61, 77.23],
-    geolocation:true,
-    pod:'City',
-    bridge:true,
-    tokenizeAddress:true,
-    filter:'cop:9QGXAM',
-    hyperLocal:true,
-    distance:true,
-    width:300,
-    height:300,
-    clearButton:false, //to hide cross button, which is right side of search input
-    blank_callback:function()
-        {
-            console.log("called when click on cross button or input value become blank");
-        }                
+import { mappls } from "mappls-web-maps";
+import { mappls_plugin } from "mappls-web-maps";
+function App() {
+  const auto = { width: "300px", position: "absolute",zIndex: 999,  fontSize: "15px",  padding: "10px", border: "1px solid #ddd", outline: "none !important"}
+  
+  var callback;
+  var mapplsClassObject = new mappls();
+  var mapplsPluginObject = new mappls_plugin();
+
+const loadObject = {
+  map: true,
+  plugins: ["search"],
 };
-      
-var search = this.mapplsPluginObject.search("agra", placeOptions,callback_method );
-function callback_method(data: any)
-{
+
+  mapplsClassObject.initialize(
+    "<-----add token here--->",
+    loadObject,
+    () => {
+      var optional_config = {
+        location: [28.61, 77.23],
+        region: "IND",
+        height: 300,
+      };
+      mapplsPluginObject.search(
+        document.getElementById("auto"),
+        optional_config,
+        callback
+      );
+    }
+  );
+  callback = (data) => {
     console.log(data);
+  };
+
+  return (
+    <div>
+      <input style={auto}
+        type="text"
+        id="auto"
+        name="auto"
+        className="search-outer form-control as-input"
+        placeholder="Search places or eLoc's..."
+        required=""
+        spellCheck="false"
+        
+      />
+    </div>
+  );
+}
+export default App;
+```
+## Angular
+```js
+import { Component, OnInit } from '@angular/core';
+import { mappls, mappls_plugin } from 'mappls-web-maps';
+@Component({
+  selector: 'app-root',
+  template: `
+    <style>
+      #auto { color: #000; max-width: 99%; width: 300px; position: absolute; z-index: 999; font-size: 15px; padding: 10px; border: 1px solid #ddd; outline: none !important; top: 5px; border-radius: 10px; margin: 4px; }
+    </style>
+    <div
+      id="map"
+      style="width: 99%; height: 99vh; background-color: white;"
+    ></div>
+    <input
+      type="text"
+      id="auto"
+      name="auto"
+      class="search-outer form-control as-input"
+      placeholder="Search places or eLoc's..."
+      required=""
+      spellcheck="false"
+    />
+  `,
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit {
+  mapObject: any;
+  marker: any;
+  callback: any;
+  data: any;
+  mapplsClassObject = new mappls();
+  mapplsPluginObject = new mappls_plugin();
+
+  ngOnInit() {
+    const loadObject = {
+      map: false,
+      plugins: ['search'],
+    };
+
+    this.mapplsClassObject.initialize(
+      '<----- Add your token here ------>',
+      loadObject,
+      () => {
+        //
+        var optional_config = {
+          location: [28.61, 77.23],
+          region: 'IND',
+          height: 300,
+        };
+        this.mapplsPluginObject.search(
+          document.getElementById('auto'),
+          optional_config,
+          this.callback
+        );
+      }
+    );
+
+    this.callback = (data: any) => {
+      console.log(data);
+    };
+  }
 }
 ```
 
@@ -143,7 +238,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
+<div align="center">&copy Copyright 2023 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://about.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://about.mappls.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://about.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://about.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 
