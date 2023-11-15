@@ -21,9 +21,10 @@ Before using the Plugin in the your solution, please ensure that the related acc
 
 ## Document Version History
 
-| Version | Last Updated | Author |
+| Version | Remarks | Author |
 | ---- | ---- | ---- |
-| 3.0 | 22 April 2022 | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Added | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Update |SDK Product Team ([PK](https://github.com/prabhjot729/))|
 
 
 
@@ -49,12 +50,117 @@ Visit the following link for visiting the live demo:
 
 
 ## Add the Marker plugin
+### Implementation
 
+## React JS
 ```js
- var pinMarkerObj =  this.mapplsPluginObject.pinMarker( {map:this.mapObject, pin:'mmi000',popupHtml:"<h1>MMI</h1>"}, callback_method );
-                  function callback_method(data: any){
-                     console.log(data);
-                 }
+import { mappls } from "mappls-web-maps";
+import { mappls_plugin } from "mappls-web-maps";
+function App() {
+  const styleMap = { width: "99%", height: "99vh", display: "inline-block" };
+  const mapProps = {
+    center: [28.633, 77.2194],
+    zoom: 4,
+  };
+
+  var mapObject;
+  var marker;
+  var mapplsClassObject = new mappls();
+  var mapplsPluginObject = new mappls_plugin();
+
+  const loadObject = {
+    map: true,
+    plugins: ["pinMarker"],
+  };
+
+  mapplsClassObject.initialize(
+    "<-----add token here--->",
+    loadObject,
+    () => {
+      mapObject = mapplsClassObject.Map({ id: "map", properties: mapProps });
+
+      //load map layers/components after map load, inside this callback (Recommended)
+      mapObject.on("load", () => {
+        // Activites after mapload
+        plugins();
+      });
+    }
+  );
+
+  function plugins() {
+    mapplsPluginObject.pinMarker(
+      {
+        map: mapObject,
+        pin: "mmi000",
+        popupHtml: '<h1 style="color:green">MapmyIndia</h1>',
+      },
+      (e) => {
+        console.log(e);
+      }
+    );
+  }
+
+  return <div id="map" style={styleMap}></div>;
+}
+export default App;
+ ```
+ ## Angular
+ ```js
+ import { Component, OnInit } from '@angular/core';
+import { mappls, mappls_plugin } from 'mappls-web-maps';
+@Component({
+  selector: 'app-root',
+  template: `<div
+    id="map"
+    style="width: 99%; height: 99vh; background-color: white;"
+  ></div>`,
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit {
+  mapObject: any;
+  marker: any;
+  mapplsClassObject = new mappls();
+  mapplsPluginObject = new mappls_plugin();
+
+  mapProps = {
+    center: [28.633, 77.2194],
+    traffic: false,
+    zoom: 4,
+    geolocation: false,
+    clickableIcons: false,
+  };
+
+  ngOnInit() {
+    const loadObject = {
+      map: true,
+      plugins: ['pinMarker'],
+    };
+
+    this.mapplsClassObject.initialize(
+      '<----- Add your token here ------>',
+      loadObject,
+      () => {
+        this.mapObject = this.mapplsClassObject.Map({
+          id: 'map',
+          properties: this.mapProps,
+        });
+
+        this.mapObject.on('load', () => {
+          var obj = this.mapplsPluginObject.pinMarker(
+            {
+              map: this.mapObject,
+              pin: 'mmi000',
+              popupHtml: '<h1 style="color:green">MapmyIndia</h1>',
+            },
+            (e: any) => {
+              console.log(e);
+            }
+          );
+        });
+      }
+      );
+    }
+  }
  ```
 
 #### Mandatory Parameters
@@ -215,7 +321,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
+<div align="center">&copy  Copyright 2023 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://about.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://about.mappls.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://about.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://about.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 
