@@ -9,9 +9,10 @@ Powered with India's most comprehensive and robust mapping functionalities. Now 
 
 ## Document Version History
 
-| Version | Last Updated | Author |
+| Version | Remarks | Author |
 | ---- | ---- | ---- |
-| 3.0 | 03 May 2022 | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Added | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Update |SDK Product Team ([PK](https://github.com/prabhjot729/))|
 
 
 ## Getting Access
@@ -48,33 +49,128 @@ Visit the following link for visiting the live demo:
 
 ## Add the Direction plugin
 
+### Implementation
 
+## React JS
 ```js
-var direction_option = 
-{
-    Resource: 'route_eta',
-    annotations:"nodes,congestion",
-    map:this.mapObject,
-    start:"28.545,77.545",
-    end:
-        {
-            label:'India Gate, Delhi',
-            geoposition:"1T182A"
-        },
-}
-this.mapplsPluginObject.direction(direction_option, callback_method );
-function callback_method(data: any)
-    {
-        console.log(data);
+import { mappls } from "mappls-web-maps";
+import { mappls_plugin } from "mappls-web-maps";
+function App() {
+  const styleMap = { width: "99%", height: "99vh", display: "inline-block" };
+  const mapProps = {
+    center: [28.633, 77.2194],
+    zoom: 4,
+  };
+
+  var mapObject;
+  var mapplsClassObject = new mappls();
+  var mapplsPluginObject = new mappls_plugin();
+
+  const loadObject = {
+    map: true,
+    plugins: ["direction"],
+  };
+
+  mapplsClassObject.initialize(
+    "<-----add token here--->",
+    loadObject,
+    () => {
+      mapObject = mapplsClassObject.Map({ id: "map", properties: mapProps });
+
+      //load map layers/components after map load, inside this callback (Recommended)
+      mapObject.on("load", () => {
+        // Activites after mapload
+        plugins();
+      });
     }
+  );
+
+  function plugins() {
+    var direction_option = {
+      Resource: 'route_eta',
+      annotations: 'nodes,congestion',
+      map: mapObject,
+      start: '28.545,77.545',
+      end: { label: 'India Gate, Delhi', geoposition: '1T182A' },
+    };
+    mapplsPluginObject.direction(direction_option, (e) => {
+      console.log(e);
+    });
+  }
+
+  return (
+    <div id="map" style={styleMap}>
+    </div>
+  );
+}
+export default App;
 ```
+### Angular
+```js
+import { Component, OnInit } from '@angular/core';
+import { mappls, mappls_plugin } from 'mappls-web-maps';
+
+@Component({
+  selector: 'app-root',
+  template:'<div  id="map"  style="width: 99%; height: 99vh; background-color: white;"></div>',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit {
+  mapObject: any;
+  mapplsClassObject = new mappls();
+  mapplsPluginObject = new mappls_plugin();
+
+  mapProps = {
+    center: [28.633, 77.2194],
+    traffic: false,
+    zoom: 4,
+    geolocation: false,
+    clickableIcons: false,
+  };
+
+  ngOnInit() {
+    const loadObject = {
+      map: true,
+      plugins: ['direction'],
+    };
+
+    this.mapplsClassObject.initialize(
+      '<----- Add your token here ------>',
+      loadObject,
+      () => {
+        this.mapObject = this.mapplsClassObject.Map({
+          id: 'map',
+          properties: this.mapProps,
+        });
+        
+        this.mapObject.on('load', () => {
+          var direction_option = {
+            Resource: 'route_eta',
+            annotations: 'nodes,congestion',
+            map: this.mapObject,
+            start: '28.545,77.545',
+            end: { label: 'India Gate, Delhi', geoposition: '1T182A' },
+          };
+          this.mapplsPluginObject.direction(direction_option, (e: any) => {
+            console.log(e);
+          });
+        });
+      }
+      );
+    }
+  }
+  ```
 
 ## Properties
 
 ### Mandatory
 
 1.  `map`(object): vector map or raster map object from respective Mappls Map SDKs.
+## Example
 
+```js
+mappls.direction({map:map,start:"28.545,77.545",end:{label:'India Gate, Delhi',geoposition:"1T182A"}});
+```
 
 ### Optional Parameters
 
@@ -181,6 +277,13 @@ function callback_method(data: any)
 33. `activeColor` : To configure the color of Active Route. Please note If `routeColor` is assigned then `activeColor` will hide the first suggested route.Will accept rgb, Hex code as well as color names.
 34. `activeStrokeWidth` : To assign width of the route. Default value is 7.
 35. `callback`: (function). To get callback data after route plotted.
+36. `routeIndex`: (function) - To get the route index number and route name(if present).
+37. `collapse` : To minimise the entire direction plugin in left direction. _Available only for Top left position_. Default is false. 
+    This parameter is also available in form of method in callback function. Refer below to use the function
+       ```js
+       collapse:function(data){console.log(data);},
+       ```
+38. `connector` : To show the connecting line with start and end location with the route. Default is false.
 
 ## Additional Parameter - alongTheRoute
  
@@ -286,7 +389,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
+<div align="center">&#169 Copyright 2023 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://about.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://about.mappls.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://about.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://about.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 
