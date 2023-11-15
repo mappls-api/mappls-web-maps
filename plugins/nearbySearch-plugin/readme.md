@@ -21,9 +21,10 @@ Before using the Plugin in the your solution, please ensure that the related acc
 
 ## Document Version History
 
-| Version | Last Updated | Author |
+| Version | Remarks | Author |
 | ---- | ---- | ---- |
-| 3.0 | 22 April 2022 | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Added | Mappls API Team ([MS](https://github.com/mamtasharma117)) |
+| 3.0 | Document Update |SDK Product Team ([PK](https://github.com/prabhjot729/))|
 
 
 ## Introduction
@@ -49,21 +50,119 @@ Visit the following link for visiting the live demo:
 
 ### 1. Add the Nearby Search plugin
 
+## React JS
+```Js
+import { mappls } from "mappls-web-maps";
+import { mappls_plugin } from "mappls-web-maps";
+function App() {
 
+  var mapplsClassObject = new mappls();
+  var mapplsPluginObject = new mappls_plugin();
+
+  const loadObject = {
+    map: false,
+    plugins: ["nearby"],
+  };
+
+  mapplsClassObject.initialize(
+    "<-----add token here--->",
+    loadObject,
+    () => {
+      var options = {
+        divId: "nearby_search",
+        keywords: "atm",
+        refLocation: "28.632735,77.219696",
+        fitbounds: true,
+        icon: {
+          url: "https://apis.mappls.com/map_v3/1.png",
+        },
+        click_callback: function (d) {
+          if (d) {
+            var l =
+              "Name: " +
+              d.placeName +
+              "\nAddress: " +
+              d.placeAddress +
+              "\neLoc: " +
+              d.eLoc;
+            alert(l);
+          }
+        },
+      };
+      mapplsPluginObject.nearby(options, function (data) {
+        let nr = data;
+        console.log(nr);
+      });
+    }
+  );
+
+  return true;
+}
+export default App;
+```
+
+## Angular
 ```js
-     var options={
-                      divId:'nearby_search',
-                      map:this.mapObject,
-                      keywords:'atm' ,
-                      refLocation:"28.632735,77.219696",
-                      fitbounds:true,
-                    
-            
-                      }
-                      var nrObj= this.mapplsPluginObject.nearby(options, callback_method );
-                      function callback_method(data: any){
-                         console.log(data);
-                     }
+import { Component, OnInit } from '@angular/core';
+import { mappls, mappls_plugin } from 'mappls-web-maps';
+
+@Component({
+  selector: 'app-root',
+  template: '',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit {
+  mapObject: any;
+  mapplsClassObject = new mappls();
+  mapplsPluginObject = new mappls_plugin();
+
+  mapProps = {
+    center: [28.633, 77.2194],
+    traffic: false,
+    zoom: 4,
+    geolocation: false,
+    clickableIcons: false,
+  };
+
+  ngOnInit() {
+    const loadObject = {
+      map: false,
+      plugins: ['nearby'],
+    };
+
+    this.mapplsClassObject.initialize(
+      '<----- Add your token here ------>',
+      loadObject,
+      () => {
+        var options = {
+          divId: 'nearby_search',
+          keywords: 'atm',
+          refLocation: '28.632735,77.219696',
+          fitbounds: true,
+          icon: {
+            url: 'https://apis.mappls.com/map_v3/1.png',
+          },
+          click_callback: function (d: any) {
+            if (d) {
+              var l =
+                'Name: ' +
+                d.placeName +
+                '\nAddress: ' +
+                d.placeAddress +
+                '\neLoc: ' +
+                d.eLoc;
+              alert(l);
+            }
+          },
+        };
+        this.mapplsPluginObject.nearby(options, function (data: any) {
+          let nr = data;
+          console.log(nr);
+        });
+      }
+    );
+  }
+}
 ```
 
 #### Mandatory Parameters
@@ -196,7 +295,7 @@ Need support? contact us!
 
 
 
-<div align="center">@ Copyright 2022 CE Info Systems Ltd. All Rights Reserved.</div>
+<div align="center">&#169 Copyright 2023 CE Info Systems Ltd. All Rights Reserved.</div>
 
 <div align="center"> <a href="https://about.mappls.com/api/terms-&-conditions">Terms & Conditions</a> | <a href="https://about.mappls.com/about/privacy-policy">Privacy Policy</a> | <a href="https://about.mappls.com/pdf/mapmyIndia-sustainability-policy-healt-labour-rules-supplir-sustainability.pdf">Supplier Sustainability Policy</a> | <a href="https://about.mappls.com/pdf/Health-Safety-Management.pdf">Health & Safety Policy</a> | <a href="https://about.mappls.com/pdf/Environment-Sustainability-Policy-CSR-Report.pdf">Environmental Policy & CSR Report</a>
 
