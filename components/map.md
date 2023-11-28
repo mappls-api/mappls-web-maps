@@ -54,9 +54,9 @@
                     fullscreenControl:  true, // It shows the icon of the full screen on the map
                     scrollWheel:  true, // If false, disables zooming on the map using a mouse scroll
                     scrollZoom:  true, // if `false` scroll to zoom interaction is disabled.
-                    rotateControl:  true. // enable/disable of the map.
+                    rotateControl:  true, // enable/disable of the map.
                     scaleControl:  true, // The initial enabled/disabled state of the Scale control.
-                    zoomControl:  true  // The enabled/disabled Zoom control at a fixed position
+                    zoomControl:  true,  // The enabled/disabled Zoom control at a fixed position
                     zoomControlOptions: 
                         {
                             position:mappls.ControlPosition.RIGHT_CENTER
