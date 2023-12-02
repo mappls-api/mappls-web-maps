@@ -2,11 +2,12 @@
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
 
-You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)  
-
-
 #  Heatmap Layer
 
+<p>A heatmap layer is a visualization technique used in data analysis and mapping to represent the intensity of data values in a two-dimensional space. It is commonly used to visualize the distribution of data points and highlight areas with higher or lower concentrations.
+This layer assigns colors to different regions based on the intensity of the underlying data. You start with a set of data points, each associated with a specific location (latitude and longitude in the case of maps).
+Each data point has a value representing the intensity or magnitude of the phenomenon you are visualizing (e.g., temperature, population density, etc.).Define a color scale that represents the range of values in your data. For example, you might use a gradient from cool to warm colors.For each data point, determine its position on the color scale based on its value. The color assigned to the point corresponds to its position on the scale. Lastly render the layer on the map using the below mwnetioned methods.
+You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)  </p>
 
 ## Adding a Heatmap Overlay
   
@@ -31,7 +32,14 @@ this.heatmapObject = this.mapplsClassObject.HeatmapLayer(
     })
 });
 ```
+## Removing a Heatmap Overlay
 
+```js
+mapplsClassObject.removeLayer({
+    map: mapObject,
+    layer: heatmapObject,
+  });
+```
 <br>
 
 For any queries and support, please contact: 
