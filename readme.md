@@ -25,6 +25,7 @@ Your MapmyIndia Maps SDK usage needs a set of license keys ([get them here ](htt
 | Version | Last Updated | Author | Remarks |
 | ---- | ---- | ---- | ---- |
 | 3.0 | 05 April 2022 | MapmyIndia API Team ([MS](https://github.com/mamtasharma117)) | Initial Commit |
+| 3.0 | 12 December 2023 | MapmyIndia API Team ([PK](https://github.com/prabhjot729)) | Document Update|
 
 ###   Supported Technologies
 
