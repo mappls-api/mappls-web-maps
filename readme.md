@@ -25,11 +25,16 @@ Your MapmyIndia Maps SDK usage needs a set of license keys ([get them here ](htt
 | Version | Last Updated | Author | Remarks |
 | ---- | ---- | ---- | ---- |
 | 3.0 | 05 April 2022 | MapmyIndia API Team ([MS](https://github.com/mamtasharma117)) | Initial Commit |
-| 3.0 | 02 December 2023 | MapmyIndia API Team ([PK](https://github.com/prabhjot729)) | Document Update|
+| 3.0 | 02 December 2022 | MapmyIndia API Team ([PK](https://github.com/prabhjot729)) | Document Update |
+
 
 ###   Supported Technologies
 
-Node.js, Angular, React JS, Cordova, Ionic
+- Node.js
+- Angular
+- React JS
+- Cordova
+- Ionic
 
   
 ### Supported Platforms
@@ -37,6 +42,37 @@ Node.js, Angular, React JS, Cordova, Ionic
 - Web
 - Android
 - iOS
+
+## Getting Started
+
+### Components
+- [Map](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md)
+	- [Properties ](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#1-properties)
+	- [Methods](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#2-map-methods)
+	- [Events](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#3--map-events----listening-to-map-events)
+	- [Markers](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md)
+		- [Adding a marker](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#1--adding-a-marker)
+		- [Marker Methods](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#2-marker-methods)
+		- [Marker Events](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#3-marker-events)
+		- [Adding Multiple Markers](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#iv-adding-multiple-markers)
+- [InfoWindows](https://github.com/mappls-api/mappls-web-maps/blob/main/components/infowindow.md)
+- [Polylines](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polyline.md)
+- [Polygons](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polygons.md)
+- [Circle](https://github.com/mappls-api/mappls-web-maps/blob/main/components/circle.md)
+- [Overlays](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polyline.md)
+	- [Geojson](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polyline.md)
+	- [KML](https://github.com/mappls-api/mappls-web-maps/blob/main/components/overlays.md)
+	- [Heat Map](https://github.com/mappls-api/mappls-web-maps/blob/main/components/heatmap.md)
+### Plugins
+- [Place Search](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/placeSearch-plugin)
+- [Place Picker](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/placePicker-plugin)
+- [Nearby Search](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/nearbySearch-plugin)
+- [Directions](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/directions-plugin)
+- [getDistance](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/getDistance%20Method)
+- [marker-plugin](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/marker-plugin)
+- [Eloc-Plugin](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/eLoc-plugin)
+- [routeSummary Plugin](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/routeSummary%20Plugin)
+
 
 ## Installation
 
@@ -56,7 +92,7 @@ npm  i  mappls-web-maps
 	import { mappls, mappls_plugin } from  'mappls-web-maps'
 	```
 
-## Usage
+## Implementation
 
 ### Loading a Map
 
@@ -124,35 +160,6 @@ npm  i  mappls-web-maps
 	export  default  App;
 	```
 
-## Learn more about Features
-
-- Components
-	- [Map](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md)
-		- [Properties ](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#1-properties)
-		- [Methods](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#2-map-methods)
-		- [Events](https://github.com/mappls-api/mappls-web-maps/blob/main/components/map.md#3--map-events----listening-to-map-events)
-		- [Markers](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md)
-			- [Adding a marker](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#1--adding-a-marker)
-			- [Marker Methods](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#2-marker-methods)
-			- [Marker Events](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#3-marker-events)
-			- [Adding Multiple Markers](https://github.com/mappls-api/mappls-web-maps/blob/main/components/markers.md#iv-adding-multiple-markers)
-		- [InfoWindows](https://github.com/mappls-api/mappls-web-maps/blob/main/components/infowindow.md)
-		- [Polylines](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polyline.md)
-		- [Polygons](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polygons.md)
-		- [Circle](https://github.com/mappls-api/mappls-web-maps/blob/main/components/circle.md)
-		- [Overlay](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polyline.md)
-			- [Geojson](https://github.com/mappls-api/mappls-web-maps/blob/main/components/polyline.md)
-			- [KML](https://github.com/mappls-api/mappls-web-maps/blob/main/components/overlays.md)
-			- [Heat Map](https://github.com/mappls-api/mappls-web-maps/blob/main/components/heatmap.md)
-- Plugins
-	- [Place Search](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/placeSearch-plugin)
-	- [Place Picker](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/placePicker-plugin)
-	- [Nearby Search](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/nearbySearch-plugin)
-	- [Directions](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/directions-plugin)
-	- [getDistance](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/getDistance%20Method)
-	- [marker-plugin](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/marker-plugin)
-	- [Eloc-Plugin](https://github.com/mappls-api/mappls-web-maps/tree/main/plugins/eLoc-plugin)
-	- [routeSummary Plugin]()
 
 
 That’s All !
