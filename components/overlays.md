@@ -3,10 +3,22 @@
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
 
-# Overlays
+## Overlays
 
+<p>Overlays refer to the process of combining two or more spatial data layers to create a new layer that retains the information from both original layers. Overlay operations are fundamental in GIS and are used to explore spatial relationships, identify intersections, and derive new information.</p>
   
 ## Adding a KML Overlay
+
+#### KML: Keyhole Markup Language is a file format employed to showcase geographical data on maps. With this kml object, you have the capability to superimpose KML data onto Mappls Maps for web applications.
+Important Notes to remember
+- Only KML data supported.
+- KML file must have absolute path or raw KML string (in variable or in textbox)
+- All internal URL's path must be absolute. (for icon path etc)
+- File must not be password protected.
+- File must be CORS enabled from the server where they are hosted.
+- File must follow KML standard strictly.
+
+<br>
 
 ```js
 this.kmlObject = this.mapplsClassObject.KmlLayer({
@@ -26,6 +38,10 @@ preserveViewport:true
 
 
 ## Adding a Geojson layer
+
+#### Geojson : GeoJSON overlays refer to the use of GeoJSON data to overlay additional information or features on a map. GeoJSON is a format for encoding geographic data structures, and it is often used to represent features such as points, lines, and polygons along with their properties. When dealing with mapping libraries or platforms that support GeoJSON, you can create overlays to display this geographical information on a map.
+
+<br>
 
 ```js
 var  mixjson =
