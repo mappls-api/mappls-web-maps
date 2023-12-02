@@ -4,7 +4,9 @@
 
 #  InfoWindow  
 
-### Adding a InfoWindow
+Info Windows provide a user-friendly method for displaying information related to a marker, essentially explaining the purpose of that marker. When users encounter a marker, their natural instinct is to click on it to discover more details, and presenting an info window is the ideal approach to fulfill this expectation.
+
+## Adding a InfoWindow
 ```js
 this.infowindowObject = this.mapplsClassObject.InfoWindow(
     {
@@ -23,6 +25,14 @@ this.infowindowObject = this.mapplsClassObject.InfoWindow(
     }
 )
 ``` 
+## Removing a InfoWindow
+
+```js
+mapplsClassObject.removeLayer({
+    map: mapObject,
+    layer: infowindowObject,
+  });
+```
 
 <br>
 
