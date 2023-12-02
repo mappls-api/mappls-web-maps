@@ -1,7 +1,12 @@
 [<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://www.mapmyindia.com/api)
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
-# Polygon
+
+## Polygon
+
+<p>Polygons are a way of showing a territory. In cases where you want to showcase data over an area, polygons are your best pick. You can use them to show Geozones as well.
+
+It’s very like generating a polyline, the basic steps remain the same, create a Data set, generate a polygon and add it to the map.</p>
 
   
 
@@ -86,7 +91,9 @@ center:
 
 ### 2.  Polygon Events
 -  `click`: Fired when a pointing device (usually a mouse) is pressed on the marker.
-	Example :  Angular / Cordova / Ionic *// Refer below code  without `this.` for React js reference.*
+
+	Example :  Angular / Cordova / Ionic <br>
+	Refer below code  without `this.` for React js reference.
 	```js
 	polygonObject.addListener('load', function () { console.log('click');});
 	```
@@ -97,6 +104,17 @@ center:
 -  `draggable_changed`: This event is fired when the marker's draggable property changes..
 -  `mousemove`: Fired when mouse move.
 -  `mouseover`: This event is fired when the mouse enters the area of the marker icon.
+
+
+### Remove Polygon
+
+```js
+mapplsClassObject.removeLayer({
+  map: mapObject,
+  layer: polygonObject,
+});
+```
+
 
 
 <br>
