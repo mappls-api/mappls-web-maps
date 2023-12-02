@@ -1,7 +1,10 @@
 [<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://www.mapmyindia.com/api) 
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
-# Map Components
+
+## Map Component
+<p>The Mappls Web Maps enables the creation and customization of interactive maps for both India and the global context. Developed by Mappls (MapmyIndia) India's leading Map provider, this is designed to produce mobile-friendly maps with a user-friendly interface and excellent performance. It consists of a set of classes and functions that allow developers to incorporate a wide range of map features into their web and mobile applications.</p>
+
 
 ## 1. Properties 
 
@@ -11,7 +14,7 @@
     -   Map Properties
     -   Callback Function
 
-    ### Code Snippet
+    ### Code Snippet for adding the map component
 
     ```js
     mapplsClassObject.map(
@@ -29,8 +32,9 @@
     );
     ```
 
-    ### Optional Parameters Usage
-    There are several map parameters which can be used with map methods to meet any application requirements.
+    ### Optional Parameters
+
+    <p>There are several map parameters which can be used with map methods to meet any application requirements.</p>
 
     ```js
     mapplsClassObject.map(
@@ -207,15 +211,15 @@
 
 ## 3.  Map Events -  Listening to Map Events
 
-## `Event Types`:
+### `Event Types`:
 
-1.  `addListener` :  To pass Event & callback    
-2.  `clearListeners` :  Used to remove Event    
-3.  `addListenerOnce` :  Same as addListener but call once
+-  `addListener` :  To pass Event & callback    
+-  `clearListeners` :  Used to remove Event    
+-  `addListenerOnce` :  Same as addListener but call once
 
 Lets Learn how to use them.
 
-## 1. addListener
+## 1. addListener Event
 -  `load` :  Fired when map is loaded completely.
 _`Example Usage`_
     -   **Angular / Cordova / Ionic**
@@ -392,7 +396,7 @@ _`Example Usage`_
         ```js
         mapObject.addListener('pitchend', function () { console.log('pitchend');});
         ```
-## 2. clearListeners
+## 2. clearListeners Events
 
 _`Example Usage`_
 -   **Angular / Cordova / Ionic**
