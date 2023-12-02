@@ -4,6 +4,13 @@
 
 #  Circle
 
+<p>Circles are a method for designating an area on a map with minimal user interaction. A circle is characterized by just two key attributes:
+
+- The central point of the circle, specified by its latitude and longitude coordinates.
+- The radius of the circle.
+
+With these two values, you can effortlessly outline a specific region of interest on a map.</p>
+
 ## 1. Adding a Circle
 ```js
 this.circleObject = this.mapplsClassObject.Circle({
@@ -42,8 +49,20 @@ radius:  50,
 -  `mouseover:` This event is fired when the mouse enters the area of the marker icon.
 
 
-<br>
+## Removing a circle
 
+```js
+mapplsClassObject.removeLayer({
+  map: mapObject,
+  layer: circleObject,
+});
+```
+
+
+
+
+
+<br>
 For any queries and support, please contact: 
 
 [<img src="https://about.mappls.com/images/mappls-logo.svg" height="40"/> </p>](https://about.mappls.com/api/)
