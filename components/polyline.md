@@ -2,8 +2,12 @@
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
 
-# Polyline
- 
+## Polyline
+ <p>Polylines are a means of visualizing movement or routes on a map, and at Mappls, we recognize the various ways you can make use of a map's capabilities, with Polylines being one of them.
+
+Polylines are essentially uninterrupted lines formed by one or more line segments, preferably represented as a geopath. To include a polyline, follow the initial map setup as described in the earlier sections, and then establish a dataset. What exactly is a dataset? It's the assembly of points (latitude and longitude coordinates) that defines the path along which you wish the polyline to be depicted.</p>
+
+
 ### 1. Adding a Polyline
 
 ```js
@@ -280,6 +284,16 @@ this.polylineObject = this.mapplsClassObject.Polyline(
 polylineObject.animate('stop'); //Stop Animation
 polylineObject.animate('resume'); //Resume Animation
 ```
+
+### Remove polyline
+
+```js
+mapplsClassObject.removeLayer({
+  map: mapObject,
+  layer: polylineObject,
+});
+```
+
 
 <br>
 
