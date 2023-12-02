@@ -4,7 +4,9 @@
 # Mappls Web Maps - For Angular/ Ionic / Cordova  
 
 ## Markers
-  
+  <p>
+  Utilizing markers to pinpoint locations is a hassle-free approach. You have the option to use the markers we provide as the default choice, and if you wish to use your own custom markers, we've got that aspect covered as well.
+  </p>
 
 ###  1.  Adding a Marker
 - **Angular / Cordova / Ionic**
