@@ -8,6 +8,8 @@
   Utilizing markers to pinpoint locations is a hassle-free approach. You have the option to use the markers we provide as the default choice, and if you wish to use your own custom markers, we've got that aspect covered as well.
   </p>
 
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-animated-marker-along-polyline-sf7nyj)
+
 ###  1.  Adding a Marker
 - **Angular / Cordova / Ionic**
   ```js
@@ -224,6 +226,91 @@ var  this.markerObject=this.mapplsClassObject.addGeoJson(
     cType:0
   }
 );
+```
+
+**React JS Implementation**
+```js
+import { mappls } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
+
+const mapplsClassObject = new mappls();
+
+var pts = [
+  { lat: 28.55108, lng: 77.26913 },
+  { lat: 28.55106, lng: 77.26906 },
+  { lat: 28.55105, lng: 77.26897 },
+  { lat: 28.55101, lng: 77.26872 },
+  { lat: 28.55099, lng: 77.26849 },
+  { lat: 28.55097, lng: 77.26831 },
+  { lat: 28.55093, lng: 77.26794 },
+  { lat: 28.55089, lng: 77.2676 },
+  { lat: 28.55123, lng: 77.26756 },
+  { lat: 28.55145, lng: 77.26758 },
+  { lat: 28.55168, lng: 77.26758 },
+  { lat: 28.55175, lng: 77.26759 },
+  { lat: 28.55177, lng: 77.26755 },
+  { lat: 28.55179, lng: 77.26753 },
+];
+
+const PolylineComponent = ({ map }) => {
+  const polylineRef = useRef(null);
+
+  useEffect(() => {
+    if (polylineRef.current) {
+      mapplsClassObject.removeLayer({ map: map, layer: polylineRef.current });
+    }
+    polylineRef.current = mapplsClassObject.Polyline({
+      map: map,
+      paths: pts,
+      strokeColor: "red",
+      strokeOpacity: 1.0,
+      strokeWeight: 10,
+      fitbounds: true,
+      animate: {
+        speed: 5,
+        icon_width: 25, // or as “25”
+        icon_height: 50, // or as “50”,
+        icon_url:
+          "http://www.mapmyindia.com/api/advanced-maps/doc/sample/map_sdk/car.png", //Place your icon url
+        repeat: false, //false,
+      },
+    });
+  });
+};
+
+const App = () => {
+  const map = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    mapplsClassObject.initialize("Add your Token", { map: true }, () => {
+      if (map.current) {
+        map.current.remove();
+      }
+      map.current = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+      map.current.on("load", () => {
+        setIsMapLoaded(true);
+      });
+    });
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <PolylineComponent map={map.current} />}
+    </div>
+  );
+};
+export default App;
+
 ```
   
 <br>
