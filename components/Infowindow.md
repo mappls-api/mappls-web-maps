@@ -6,7 +6,7 @@
 
 Info Windows provide a user-friendly method for displaying information related to a marker, essentially explaining the purpose of that marker. When users encounter a marker, their natural instinct is to click on it to discover more details, and presenting an info window is the ideal approach to fulfill this expectation.
 
-React JS Component Live Demo : https://codesandbox.io/p/sandbox/mappls-infowindow-vxdy8p?file=%2Fsrc%2FApp.js%3A7%2C38
+React JS Component Live Demo : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-infowindow-vxdy8p?file=%2Fsrc%2FApp.js%3A7%2C38)
 
 #### Adding a InfoWindow
 ```js
