@@ -7,6 +7,7 @@
 
 Polylines are essentially uninterrupted lines formed by one or more line segments, preferably represented as a geopath. To include a polyline, follow the initial map setup as described in the earlier sections, and then establish a dataset. What exactly is a dataset? It's the assembly of points (latitude and longitude coordinates) that defines the path along which you wish the polyline to be depicted.</p>
 
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-polyline-wrz8j5)
 
 ### 1. Adding a Polyline
 
@@ -293,7 +294,77 @@ mapplsClassObject.removeLayer({
   layer: polylineObject,
 });
 ```
+**React JS Implementation for Polylines**
+```js
+import { mappls } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
+const mapplsClassObject = new mappls();
+
+const PolylineComponent = ({ map }) => {
+  const polylineRef = useRef(null);
+
+  useEffect(() => {
+    if (polylineRef.current) {
+      mapplsClassObject.removeLayer({ map: map, layer: polylineRef.current });
+    }
+    polylineRef.current = mapplsClassObject.Polyline({
+      map: map,
+      path: [
+        { lat: 28.55108, lng: 77.26913 },
+        { lat: 28.55106, lng: 77.26906 },
+        { lat: 28.55105, lng: 77.26897 },
+        { lat: 28.55101, lng: 77.26872 },
+        { lat: 28.55099, lng: 77.26849 },
+        { lat: 28.55097, lng: 77.26831 },
+        { lat: 28.55093, lng: 77.26794 },
+        { lat: 28.55089, lng: 77.2676 },
+        { lat: 28.55123, lng: 77.26756 },
+        { lat: 28.55145, lng: 77.26758 },
+        { lat: 28.55168, lng: 77.26758 },
+        { lat: 28.55175, lng: 77.26759 },
+        { lat: 28.55177, lng: 77.26755 },
+        { lat: 28.55179, lng: 77.26753 },
+      ],
+      fitbounds: true,
+    });
+  });
+};
+
+const App = () => {
+  const map = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", { map: true }, () => {
+      if (map.current) {
+        map.current.remove();
+      }
+      map.current = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+      map.current.on("load", () => {
+        setIsMapLoaded(true);
+      });
+    });
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <PolylineComponent map={map.current} />}
+    </div>
+  );
+};
+export default App;
+
+```
 
 <br>
 
