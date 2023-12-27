@@ -11,6 +11,8 @@
 
 With these two values, you can effortlessly outline a specific region of interest on a map.</p>
 
+React JS Components Live Demo : https://codesandbox.io/p/sandbox/mappls-set-style-zmkzr4?file=%2Fsrc%2FApp.js
+
 #### 1. Adding a Circle
 ```js
 this.circleObject = this.mapplsClassObject.Circle({
