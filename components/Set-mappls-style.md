@@ -15,7 +15,7 @@ To know more about available styles, kindly contact apisupport@mapmyindia.com
 To have a look at the refer
 Live Demo: https://www.mapmyindia.com/api/advanced-maps/WebSDK-LiveDemo/map_style
 
-React JS Components Live Demo : https://codesandbox.io/p/sandbox/mappls-set-style-zmkzr4?file=%2Fsrc%2FApp.js
+React JS Components Live Demo : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-set-style-zmkzr4?file=%2Fsrc%2FApp.js)
 
 **Angular Implementation:**
 
