@@ -11,7 +11,7 @@
 
 With these two values, you can effortlessly outline a specific region of interest on a map.</p>
 
-## 1. Adding a Circle
+#### 1. Adding a Circle
 ```js
 this.circleObject = this.mapplsClassObject.Circle({
 center: {"lat":  "28.552097968260668" ,"lng":  "77.2701604561851"},
@@ -31,7 +31,7 @@ radius:  50,
 	'text-size':'30px'
 	```
 
-## 2. Circle Events
+#### 2. Circle Events
    
 -  `click`: Fired when a pointing device (usually a mouse) is pressed on the marker.
 
@@ -48,8 +48,7 @@ radius:  50,
 -  `mousemove:` Fired when mouse move.
 -  `mouseover:` This event is fired when the mouse enters the area of the marker icon.
 
-
-## Removing a circle
+#### Removing a circle
 
 ```js
 mapplsClassObject.removeLayer({
@@ -57,6 +56,64 @@ mapplsClassObject.removeLayer({
   layer: circleObject,
 });
 ```
+
+#### **React JS Implementation**
+```js
+import { mappls } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
+
+const mapplsClassObject = new mappls();
+
+const CircleComponent = ({ map }) => {
+  const circleRef = useRef(null);
+
+  useEffect(() => {
+    if (circleRef.current) {
+      mapplsClassObject.removeLayer({ map: map, layer: circleRef.current });
+    }
+    circleRef.current = mapplsClassObject.Circle({
+      map: map,
+      center: { lat: "28.552097968260668", lng: "77.2701604561851" },
+      radius: 50,
+    });
+  });
+};
+
+const App = () => {
+  const map = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", { map: true }, () => {
+      if (map.current) {
+        map.current.remove();
+      }
+      map.current = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.5520979682606, 77.27016045618],
+          zoom: 16,
+        },
+      });
+      map.current.on("load", () => {
+        setIsMapLoaded(true);
+      });
+    });
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <CircleComponent map={map.current} />}
+    </div>
+  );
+};
+export default App;
+```
+
+
 
 
 
