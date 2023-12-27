@@ -2,11 +2,13 @@
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
 
-## Map Component
+### Map Component
 <p>The Mappls Web Maps enables the creation and customization of interactive maps for both India and the global context. Developed by Mappls (MapmyIndia) India's leading Map provider, this is designed to produce mobile-friendly maps with a user-friendly interface and excellent performance. It consists of a set of classes and functions that allow developers to incorporate a wide range of map features into their web and mobile applications.</p>
 
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/hello-world-rsqnwd?file=%2Fsrc%2FApp.js%3A9%2C1)
 
-## 1. Properties 
+
+#### 1. Properties 
 
 1. `map`  method - There are 4 mandatory parameters to use this method.
     -   Map div #id  _// with proper css width & height_`*
@@ -32,7 +34,7 @@
     );
     ```
 
-    ### Optional Parameters
+    #### Optional Parameters
 
     <p>There are several map parameters which can be used with map methods to meet any application requirements.</p>
 
@@ -75,7 +77,7 @@
                 (data)=>{ mapObject = data }
 
     ```
-## 2. Map Methods
+#### 2. Map Methods
 
 -   `getBounds` :  Returns the lat/lng bounds of the current viewport.  
     _`Example Usage`_    
@@ -209,9 +211,9 @@
 -   `setToken` : Returns a Boolean indicating whether the token set or not.  
     Returns  `false`  if the token is not valid else return true.
 
-## 3.  Map Events -  Listening to Map Events
+#### 3.  Map Events -  Listening to Map Events
 
-### `Event Types`:
+#### `Event Types`:
 
 -  `addListener` :  To pass Event & callback    
 -  `clearListeners` :  Used to remove Event    
@@ -219,7 +221,7 @@
 
 Lets Learn how to use them.
 
-## 1. addListener Event
+#### 1. addListener Event
 -  `load` :  Fired when map is loaded completely.
 _`Example Usage`_
     -   **Angular / Cordova / Ionic**
@@ -396,7 +398,7 @@ _`Example Usage`_
         ```js
         mapObject.addListener('pitchend', function () { console.log('pitchend');});
         ```
-## 2. clearListeners Events
+#### 2. clearListeners Events
 
 _`Example Usage`_
 -   **Angular / Cordova / Ionic**
@@ -407,8 +409,70 @@ _`Example Usage`_
     ```js
     mapObject.removeListener('loaded', function () { console.log('unloaded');});
     ```  
-
 <br>
+
+**React JS Implementation**
+```js
+import { mappls } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
+
+const mapplsClassObject = new mappls();
+
+const App = () => {
+  const map = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", { map: true }, () => {
+      if (map.current) {
+        map.current.remove();
+      }
+      map.current = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          //  //Properties Object
+          center: [28.544, 77.5454], // the coordinates as [lat, lon]
+          draggable: true, // toggle draggable map
+          zoom: 5, //the initial Map `zoom` level.
+          minZoom: 8, //  minimum zoom level which will be displayed on the map
+          maxZoom: 15, //  maximum zoom level which will be displayed on the map
+          backgroundColor: "#fff", // used for the background of the Map div.
+          heading: 100, // The `heading` for aerial imagery in degrees
+          traffic: true, // To show traffic control on map.
+          geolocation: false, // to display the icon for current location
+          // Controls
+          disableDoubleClickZoom: true, // enables/disables zoom and center on double click.
+          fullscreenControl: true, // It shows the icon of the full screen on the map
+          scrollWheel: true, // If false, disables zooming on the map using a mouse scroll
+          scrollZoom: true, // if `false` scroll to zoom interaction is disabled.
+          rotateControl: true, // enable/disable of the map.
+          scaleControl: true, // The initial enabled/disabled state of the Scale control.
+          zoomControl: true, // The enabled/disabled Zoom control at a fixed position
+          clickableIcons: true, //to make the icons clickable
+          indoor: true, // To show indoor floor plans in MapmyIndia Vector SDK.
+          indoor_position: "bottom-left",
+          //Possible Values : TOP_CENTER, `TOP_LEFT`, `TOP_RIGHT`, `LEFT_TOP`, `RIGHT_TOP`, `LEFT_CENTER`, `RIGHT_CENTER`, `LEFT_BOTTOM`, `RIGHT_BOTTOM`, `BOTTOM_CENTER`, `BOTTOM_LEFT`, `BOTTOM_RIGHT``
+          tilt: 30, //tilt : Controls the automatic switching behavior for the angle of incidence of the map. The only allowed values are 0 to 85.
+        },
+      });
+      map.current.on("load", () => {
+        setIsMapLoaded(true);
+      });
+    });
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded}
+    </div>
+  );
+};
+
+export default App;
+```
 
 For any queries and support, please contact: 
 
