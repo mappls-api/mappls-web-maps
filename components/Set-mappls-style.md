@@ -15,7 +15,9 @@ To know more about available styles, kindly contact apisupport@mapmyindia.com
 To have a look at the refer
 Live Demo: https://www.mapmyindia.com/api/advanced-maps/WebSDK-LiveDemo/map_style
 
-**Implementation:**
+React JS Components Live Demo : https://codesandbox.io/p/sandbox/mappls-set-style-zmkzr4?file=%2Fsrc%2FApp.js
+
+**Angular Implementation:**
 
 ```js
 import { Component, OnInit } from  '@angular/core';
@@ -58,6 +60,51 @@ mapProps = { center: [28.6330, 77.2194], traffic:  false, zoom:  4, geolocation:
 
 }
 ```
+**React JS Implementation:**
+
+```JS
+import { mappls } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
+
+const mapplsClassObject = new mappls();
+
+const App = () => {
+  const map = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", { map: true }, () => {
+      if (map.current) {
+        map.current.remove();
+      }
+      map.current = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.529467, 77.22315],
+          zoom: 15,
+        },
+      });
+      map.current.on("load", () => {
+        setIsMapLoaded(true);
+        mapplsClassObject.setStyle("standard-hybrid");
+      });
+    });
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded}
+    </div>
+  );
+};
+export default App;
+
+```
+
+
 That's all!
 
 <br>
