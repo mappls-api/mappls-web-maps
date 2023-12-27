@@ -8,7 +8,7 @@
 
 It’s very like generating a polyline, the basic steps remain the same, create a Data set, generate a polygon and add it to the map.</p>
 
-  
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-geojson-layer-nw9ddv?file=%2Fsrc%2FApp.js%3A1%2C1-142%2C1)  
 
 ### 1. Adding a Polygon
 
@@ -114,6 +114,152 @@ mapplsClassObject.removeLayer({
   layer: polygonObject,
 });
 ```
+
+**React Js Implementation for Polygon**
+```js
+import { mappls } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
+
+const mapplsClassObject = new mappls();
+
+var mixjson = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [28.5495, 77.267854],
+      },
+      properties: {
+        name: "MapmyIndia old Office",
+        description: "Okhla delhi",
+        icon: "https://apis.mapmyindia.com/map_v3/1.png",
+        "icon-size": 1,
+        text: "",
+        "text-size": 20,
+        "text-offset": [0, 0],
+        "text-color": "red",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [28.5510446, 77.268952],
+      },
+      properties: {
+        name: '<div onclick="function1()">MapmyIndia New Office</div>',
+        description: "68,Okhla delhi",
+        icon: "https://apis.mapmyindia.com/map_v3/1.png",
+        "icon-size": 0.55,
+        text: "1",
+        "icon-offset": [0, -20],
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "LineString",
+        coordinates: [
+          [28.551042, 77.268953],
+          [28.551005, 77.268649],
+          [28.550986, 77.268392],
+          [28.550967, 77.268231],
+          [28.550967, 77.268177],
+          [28.550958, 77.268016],
+          [28.55092, 77.267587],
+          [28.550722, 77.267651],
+          [28.55042, 77.267823],
+          [28.550128, 77.267802],
+          [28.549751, 77.267995],
+          [28.549652, 77.268039],
+        ],
+      },
+      properties: {
+        name: "Direction1",
+        description: "Direction2",
+        stroke: "#33CC00",
+        "stroke-opacity": 0.6509803921568628,
+        "stroke-width": 10,
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [28.550868798522835, 77.26878225803375],
+            [28.550868798522835, 77.26899683475493],
+            [28.550383454405356, 77.26903975009918],
+            [28.550388166494926, 77.26883590221404],
+          ],
+        ],
+      },
+      properties: {
+        name: "MapmyIndia Head Office",
+        stroke: "#33CC00",
+        "stroke-opacity": 0.6509803921568628,
+        "stroke-width": 3,
+        fill: "#33CC00",
+        "fill-opacity": 0.6509803921568628,
+      },
+    },
+  ],
+};
+
+const GeoJsonComponent = ({ map }) => {
+  const geoJsonRef = useRef(null);
+
+  useEffect(() => {
+    if (geoJsonRef.current) {
+      mapplsClassObject.removeLayer({ map: map, layer: geoJsonRef.current });
+    }
+    geoJsonRef.current = mapplsClassObject.addGeoJson({
+      map: map,
+      data: mixjson,
+      overlap: false,
+      fitbounds: true,
+      preserveViewport: true,
+    });
+  });
+};
+
+const App = () => {
+  const map = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", { map: true }, () => {
+      if (map.current) {
+        map.current.remove();
+      }
+      map.current = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+      map.current.on("load", () => {
+        setIsMapLoaded(true);
+      });
+    });
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <GeoJsonComponent map={map.current} />}
+    </div>
+  );
+};
+export default App;
+```
+
 
 
 
