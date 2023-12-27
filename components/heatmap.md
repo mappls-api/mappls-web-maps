@@ -2,14 +2,16 @@
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
 
-#  Heatmap Layer
+###  Heatmap Layer
 
-<p>A heatmap layer is a visualization technique used in data analysis and mapping to represent the intensity of data values in a two-dimensional space. It is commonly used to visualize the distribution of data points and highlight areas with higher or lower concentrations.
+A heatmap layer is a visualization technique used in data analysis and mapping to represent the intensity of data values in a two-dimensional space. It is commonly used to visualize the distribution of data points and highlight areas with higher or lower concentrations.
 This layer assigns colors to different regions based on the intensity of the underlying data. You start with a set of data points, each associated with a specific location (latitude and longitude in the case of maps).
 Each data point has a value representing the intensity or magnitude of the phenomenon you are visualizing (e.g., temperature, population density, etc.).Define a color scale that represents the range of values in your data. For example, you might use a gradient from cool to warm colors.For each data point, determine its position on the color scale based on its value. The color assigned to the point corresponds to its position on the scale. Lastly render the layer on the map using the below mwnetioned methods.
-You can get your api key to be used in this document here: [https://www.mapmyindia.com/api/signup](https://www.mapmyindia.com/api/signup)  </p>
+You can get your api key to be used in this document here: [Mappls Console](https://outpost.mappls.com/api/sso/login.jsp)
 
-## Adding a Heatmap Overlay
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-heatmap-z75nlv?file=%2Fsrc%2FApp.js%3A1%2C1-66%2C1)
+
+#### Adding a Heatmap Overlay
   
 ```js
 this.heatmapObject = this.mapplsClassObject.HeatmapLayer(
@@ -32,7 +34,7 @@ this.heatmapObject = this.mapplsClassObject.HeatmapLayer(
     })
 });
 ```
-## Removing a Heatmap Overlay
+#### Removing a Heatmap Overlay
 
 ```js
 mapplsClassObject.removeLayer({
@@ -40,6 +42,77 @@ mapplsClassObject.removeLayer({
     layer: heatmapObject,
   });
 ```
+#### **React JS Implementation**
+
+```js
+import { mappls } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
+
+const mapplsClassObject = new mappls();
+
+const HeatmapComponent = ({ map }) => {
+  const HeatmapRef = useRef(null);
+
+  useEffect(() => {
+    if (HeatmapRef.current) {
+      mapplsClassObject.removeLayer({ map: map, layer: HeatmapRef.current });
+    }
+    HeatmapRef.current = mapplsClassObject.HeatmapLayer({
+      map: map,
+      data: [
+        {
+          lat: 28.550144,
+          lng: 77.263927,
+        },
+        {
+          lat: 28.549637,
+          lng: 77.264144,
+        },
+      ],
+      opacity: 1,
+      radius: 10,
+      maxIntensity: 10,
+      fitbounds: true,
+      gradient: ["rgba(0, 0, 255, 0)", "rgba(0, 0, 255, 1)"],
+    });
+  });
+};
+
+const App = () => {
+  const map = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", { map: true }, () => {
+      if (map.current) {
+        map.current.remove();
+      }
+      map.current = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+      map.current.on("load", () => {
+        setIsMapLoaded(true);
+      });
+    });
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <HeatmapComponent map={map.current} />}
+    </div>
+  );
+};
+export default App;
+
+```
+
 <br>
 
 For any queries and support, please contact: 
