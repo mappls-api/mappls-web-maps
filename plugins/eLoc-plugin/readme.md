@@ -44,8 +44,9 @@ The SDK offers the following basic functionalities:
 
 Visit the following link for visiting the live demo:
 
-[LIVE DEMO](https://github.com/mappls-api/mappls-web-plugins/tree/main/eLoc-plugin)
+Web sdk implementation [Mappls Live Demo](https://github.com/mappls-api/mappls-web-plugins/tree/main/eLoc-plugin)
 
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-getpindetails-plugin-39qrlc?file=%2Fsrc%2FApp.js%3A1%2C1-70%2C1)
 
 For detailed understanding, Let’s get started!
 
@@ -56,35 +57,75 @@ For detailed understanding, Let’s get started!
 
 
 ```js
-import { mappls } from "mappls-web-maps";
-import { mappls_plugin } from "mappls-web-maps";
-function App() {
- 
-  var mapplsClassObject = new mappls();
-  var mapplsPluginObject = new mappls_plugin();
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-  const loadObject = {
-    map: false,
-    plugins: ["placeDetails"],
-  };
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
 
-  mapplsClassObject.initialize(
-    "<-----add token here--->",
-    loadObject,
-    () => {
-      var elocObj = mapplsPluginObject.getPinDetails(
-        { pin: "mmi000" },
-        (e) => {
-          console.log(e);
-        }
-      );
+const PlacedetailsPlugin = ({ map }) => {
+  const placedetailsRef = useRef(null);
+
+  useEffect(() => {
+    if (map && placedetailsRef.current) {
+      placedetailsRef.current.remove();
+      mapplsClassObject.removeLayer({ map, layer: placedetailsRef.current });
     }
+
+    placedetailsRef.current = mapplsPluginObject.getPinDetails(
+      { pin: "mmi000" },
+      (e) => {
+        console.log(e); /* get details in console */
+      }
+    );
+    return () => {
+      if (map && placedetailsRef.current) {
+        mapplsClassObject.removeLayer({ map, layer: placedetailsRef.current });
+      }
+    };
+  }, [map]);
+};
+
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const loadObject = { map: true, plugins: ["placedetails"] };
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+
+      mapRef.current = newMap;
+    });
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <PlacedetailsPlugin map={mapRef.current} />}
+    </div>
   );
+};
 
-  return true;
-}
 export default App;
-
 ```
 ## Angular
 ```js
