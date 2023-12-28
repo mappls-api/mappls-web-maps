@@ -44,8 +44,9 @@ For details, please contact apisupport@mappls.com.
 
 Visit the following link for visiting the live demo:
 
-[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Direction/mappls-direction-plugin)
+Web sdk implementation[Mappls Live Demo](https://about.mappls.com/api/web-sdk/vector-plugin-example/Direction/mappls-direction-plugin)
 
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-nearbysearch-plugin-gyprzn?file=%2Fsrc%2FApp.js%3A1%2C1-94%2C1)
 
 ## Add the Direction plugin
 
@@ -53,56 +54,79 @@ Visit the following link for visiting the live demo:
 
 ## React JS
 ```js
-import { mappls } from "mappls-web-maps";
-import { mappls_plugin } from "mappls-web-maps";
-function App() {
-  const styleMap = { width: "99%", height: "99vh", display: "inline-block" };
-  const mapProps = {
-    center: [28.633, 77.2194],
-    zoom: 4,
-  };
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-  var mapObject;
-  var mapplsClassObject = new mappls();
-  var mapplsPluginObject = new mappls_plugin();
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
 
-  const loadObject = {
-    map: true,
-    plugins: ["direction"],
-  };
+const DirectionPlugin = ({ map }) => {
+  const directionRef = useRef(null);
 
-  mapplsClassObject.initialize(
-    "<-----add token here--->",
-    loadObject,
-    () => {
-      mapObject = mapplsClassObject.Map({ id: "map", properties: mapProps });
-
-      //load map layers/components after map load, inside this callback (Recommended)
-      mapObject.on("load", () => {
-        // Activites after mapload
-        plugins();
-      });
+  useEffect(() => {
+    if (map && directionRef.current) {
+      directionRef.current.remove();
+      mapplsClassObject.removeLayer({ map, layer: directionRef.current });
     }
-  );
 
-  function plugins() {
-    var direction_option = {
-      Resource: 'route_eta',
-      annotations: 'nodes,congestion',
-      map: mapObject,
-      start: '28.545,77.545',
-      end: { label: 'India Gate, Delhi', geoposition: '1T182A' },
+    directionRef.current = mapplsPluginObject.direction(
+      {
+        Resource: "route_eta",
+        annotations: "nodes,congestion",
+        map: map,
+        start: "28.545,77.545",
+        end: { label: "India Gate, Delhi", geoposition: "1T182A" },
+      },
+      (e) => {
+        console.log(e);
+      }
+    );
+    return () => {
+      if (map && directionRef.current) {
+        mapplsClassObject.removeLayer({ map, layer: directionRef.current });
+      }
     };
-    mapplsPluginObject.direction(direction_option, (e) => {
-      console.log(e);
+  }, [map]);
+};
+
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const loadObject = { map: true, plugins: ["direction"] };
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+      mapRef.current = newMap;
     });
-  }
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
 
   return (
-    <div id="map" style={styleMap}>
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <DirectionPlugin map={mapRef.current} />}
     </div>
   );
-}
+};
+
 export default App;
 ```
 ### Angular
