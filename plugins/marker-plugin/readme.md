@@ -45,7 +45,9 @@ The SDK offers the following basic functionalities:
 
 Visit the following link for visiting the live demo:
 
-[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Marker/mappls-marker-plugin)
+Web sdk implementation : [Mappls Live Demo](https://about.mappls.com/api/web-sdk/vector-plugin-example/Marker/mappls-marker-plugin)
+
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-pinmarker-plugin-vzcd59?file=%2Fsrc%2FApp.js)
 
 
 
@@ -54,43 +56,24 @@ Visit the following link for visiting the live demo:
 
 ## React JS
 ```js
-import { mappls } from "mappls-web-maps";
-import { mappls_plugin } from "mappls-web-maps";
-function App() {
-  const styleMap = { width: "99%", height: "99vh", display: "inline-block" };
-  const mapProps = {
-    center: [28.633, 77.2194],
-    zoom: 4,
-  };
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-  var mapObject;
-  var marker;
-  var mapplsClassObject = new mappls();
-  var mapplsPluginObject = new mappls_plugin();
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
 
-  const loadObject = {
-    map: true,
-    plugins: ["pinMarker"],
-  };
+const PinmarkerPlugin = ({ map }) => {
+  const pinMarkerRef = useRef(null);
 
-  mapplsClassObject.initialize(
-    "<-----add token here--->",
-    loadObject,
-    () => {
-      mapObject = mapplsClassObject.Map({ id: "map", properties: mapProps });
-
-      //load map layers/components after map load, inside this callback (Recommended)
-      mapObject.on("load", () => {
-        // Activites after mapload
-        plugins();
-      });
+  useEffect(() => {
+    if (map && pinMarkerRef.current) {
+      pinMarkerRef.current.remove();
+      mapplsClassObject.removeLayer({ map, layer: pinMarkerRef.current });
     }
-  );
 
-  function plugins() {
-    mapplsPluginObject.pinMarker(
+    pinMarkerRef.current = mapplsPluginObject.pinMarker(
       {
-        map: mapObject,
+        map: map,
         pin: "mmi000",
         popupHtml: '<h1 style="color:green">MapmyIndia</h1>',
       },
@@ -98,11 +81,55 @@ function App() {
         console.log(e);
       }
     );
-  }
+    return () => {
+      if (map && pinMarkerRef.current) {
+        mapplsClassObject.removeLayer({ map, layer: pinMarkerRef.current });
+      }
+    };
+  }, [map]);
+};
 
-  return <div id="map" style={styleMap}></div>;
-}
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const loadObject = { map: true, plugins: ["pinMarker"] };
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+
+      mapRef.current = newMap;
+    });
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <PinmarkerPlugin map={mapRef.current} />}
+    </div>
+  );
+};
+
 export default App;
+
  ```
  ## Angular
  ```js

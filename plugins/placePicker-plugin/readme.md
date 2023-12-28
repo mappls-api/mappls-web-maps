@@ -42,7 +42,9 @@ The SDK offers the following basic functionalities:
 
 Visit the following link for visiting the live demo:
 
-[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Placepicker/mappls-placepicker-plugin)
+Web sdk implementation : [Mappls Live Demo](https://about.mappls.com/api/web-sdk/vector-plugin-example/Placepicker/mappls-placepicker-plugin)
+
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-placepicker-plugin-zwhvcq?file=%2Fsrc%2FApp.js%3A1%2C1-78%2C1)
 
 
 
@@ -51,56 +53,83 @@ Visit the following link for visiting the live demo:
 
 ## React
 ```js
-import { mappls } from "mappls-web-maps";
-import { mappls_plugin } from "mappls-web-maps";
-function App() {
-  const styleMap = { width: "99%", height: "99vh", display: "inline-block" };
-  const mapProps = {
-    center: [28.633, 77.2194],
-    zoom: 4,
-  };
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-  var mapObject;
-  var mapplsClassObject = new mappls();
-  var mapplsPluginObject = new mappls_plugin();
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
 
-  const loadObject = {
-    map: true,
-    plugins: ["pickerPicker","search"],
-  };
+const PlacePickerPlugin = ({ map }) => {
+  const placePickerRef = useRef(null);
 
-  mapplsClassObject.initialize(
-    "<-----add token here--->",
-    loadObject,
-    () => {
-      mapObject = mapplsClassObject.Map({ id: "map", properties: mapProps });
-
-      //load map layers/components after map load, inside this callback (Recommended)
-      mapObject.on("load", () => {
-        // Activites after mapload
-        plugins();
-      });
+  useEffect(() => {
+    if (map && placePickerRef.current) {
+      placePickerRef.current.remove();
+      mapplsClassObject.removeLayer({ map, layer: placePickerRef.current });
     }
-  );
-
-  function plugins() {
     var options = {
-      map: mapObject,
+      map: map,
       location: { lat: 28.8787, lng: 77.08888 },
       search: true,
     };
-    var picker = mapplsPluginObject.placePicker(options, callback_method);
+    placePickerRef.current = mapplsPluginObject.placePicker(
+      options,
+      callback_method
+    );
 
     function callback_method(e) {
       if (e.data) console.log(e.data);
       else console.log(e);
     }
-  }
 
-  return <div id="map" style={styleMap}></div>;
-}
+    return () => {
+      if (map && placePickerRef.current) {
+        mapplsClassObject.removeLayer({ map, layer: placePickerRef.current });
+      }
+    };
+  }, [map]);
+};
+
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const loadObject = { map: true, plugins: ["pickerPicker", "search"] };
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+
+      mapRef.current = newMap;
+    });
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <PlacePickerPlugin map={mapRef.current} />}
+    </div>
+  );
+};
+
 export default App;
-
 ```
 ## Angular
 ```js

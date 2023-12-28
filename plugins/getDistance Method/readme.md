@@ -42,50 +42,91 @@ For detailed understanding, Let’s get started!
 
 ## Live Demo
 
-Visit the following link for visiting the live demo:
+Web sdk implementation : [Mappls Live Demo](https://about.mappls.com/api/web-sdk/vector-plugin-example/Distance/mappls-default-getdistance-plugin)
 
-[LIVE DEMO]()
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-getdistance-plugin-j2swrq?file=%2Fsrc%2FApp.js%3A1%2C1-78%2C1)
+
 
 
 ## Implementation
 ## React JS
 ```js
-import { mappls } from "mappls-web-maps";
-import { mappls_plugin } from "mappls-web-maps";
-function App() {
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-  var mapObject;
-  var mapplsClassObject = new mappls();
-  var mapplsPluginObject = new mappls_plugin();
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
 
-  const loadObject = {
-    map: false,
-    plugins: ["getDistance"],
-  };
+const GetdistancePlugin = ({ map }) => {
+  const getDistanceRef = useRef(null);
 
-  mapplsClassObject.initialize(
-    "<-----add token here--->",
-    loadObject,
-    () => {
-      mapplsPluginObject.getDistance(
-        {
-          map: mapObject,
-          coordinates: "mmi000;123zrr",
-          eloc: ["mmi000", "123zrr"],
-          popupHtml: ["<h1>MMI</h1>”,”<h1>Agra</h1>"],
-          html: ["1", "2"],
-          icon: { url: "2.png", width: 30, height: 45 },
-        },
-        callback_method
-      );
-      function callback_method(data) {
-        console.log(data);
-      }
+  useEffect(() => {
+    if (map && getDistanceRef.current) {
+      getDistanceRef.current.remove();
+      mapplsClassObject.removeLayer({ map, layer: getDistanceRef.current });
     }
-  );
 
-  return true;
-}
+    getDistanceRef.current = mapplsPluginObject.getDistance(
+      {
+        map: map,
+        coordinates: "mmi000;123zrr",
+        eloc: ["mmi000", "123zrr"],
+        popupHtml: ["<h1>MMI</h1>”,”<h1>Agra</h1>"],
+        html: ["1", "2"],
+        icon: { url: "2.png", width: 30, height: 45 },
+      },
+      callback_method
+    );
+    function callback_method(data) {
+      console.log(data);
+    }
+    return () => {
+      if (map && getDistanceRef.current) {
+        mapplsClassObject.removeLayer({ map, layer: getDistanceRef.current });
+      }
+    };
+  }, [map]);
+};
+
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const loadObject = { map: true, plugins: ["getDistance"] };
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+
+      mapRef.current = newMap;
+    });
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <GetdistancePlugin map={mapRef.current} />}
+    </div>
+  );
+};
+
 export default App;
 ```
 ## Angular 

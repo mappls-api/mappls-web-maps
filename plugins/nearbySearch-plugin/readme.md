@@ -44,7 +44,9 @@ The SDK offers the following basic functionalities:
 
 Visit the following link for visiting the live demo:
 
-[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Nearbysearch/mappls-nearbysearch-plugin)
+Web sdk implementation : [Mappls Live Demo](https://about.mappls.com/api/web-sdk/vector-plugin-example/Nearbysearch/mappls-nearbysearch-plugin)
+
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-nearbysearch-plugin-gyprzn?file=%2Fsrc%2FApp.js%3A1%2C1-94%2C1)
 
 
 
@@ -52,52 +54,98 @@ Visit the following link for visiting the live demo:
 
 ## React JS
 ```Js
-import { mappls } from "mappls-web-maps";
-import { mappls_plugin } from "mappls-web-maps";
-function App() {
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-  var mapplsClassObject = new mappls();
-  var mapplsPluginObject = new mappls_plugin();
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
 
-  const loadObject = {
-    map: false,
-    plugins: ["nearby"],
-  };
+const NearbySearchPlugin = ({ map }) => {
+  const nearbysearchRef = useRef(null);
 
-  mapplsClassObject.initialize(
-    "<-----add token here--->",
-    loadObject,
-    () => {
-      var options = {
-        divId: "nearby_search",
-        keywords: "atm",
-        refLocation: "28.632735,77.219696",
-        fitbounds: true,
-        icon: {
-          url: "https://apis.mappls.com/map_v3/1.png",
-        },
-        click_callback: function (d) {
-          if (d) {
-            var l =
-              "Name: " +
-              d.placeName +
-              "\nAddress: " +
-              d.placeAddress +
-              "\neLoc: " +
-              d.eLoc;
-            alert(l);
-          }
-        },
-      };
-      mapplsPluginObject.nearby(options, function (data) {
+  useEffect(() => {
+    if (map && nearbysearchRef.current) {
+      nearbysearchRef.current.remove();
+      mapplsClassObject.removeLayer({ map, layer: nearbysearchRef.current });
+    }
+    var options = {
+      divId: "nearby_search",
+      map: map,
+      keywords: "atm",
+      refLocation: "28.632735,77.219696",
+      fitbounds: true,
+      icon: {
+        url: "https://apis.mappls.com/map_v3/1.png",
+      },
+      click_callback: function (d) {
+        if (d) {
+          var l =
+            "Name: " +
+            d.placeName +
+            "\nAddress: " +
+            d.placeAddress +
+            "\neLoc: " +
+            d.eLoc;
+          alert(l);
+        }
+      },
+    };
+
+    nearbysearchRef.current = mapplsPluginObject.nearby(
+      options,
+      function (data) {
         let nr = data;
         console.log(nr);
-      });
-    }
-  );
+      }
+    );
 
-  return true;
-}
+    return () => {
+      if (map && nearbysearchRef.current) {
+        mapplsClassObject.removeLayer({ map, layer: nearbysearchRef.current });
+      }
+    };
+  }, [map]);
+};
+
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const loadObject = { map: true, plugins: ["nearby"] };
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Token>", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+
+      mapRef.current = newMap;
+    });
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <NearbySearchPlugin map={mapRef.current} />}
+    </div>
+  );
+};
+
 export default App;
 ```
 

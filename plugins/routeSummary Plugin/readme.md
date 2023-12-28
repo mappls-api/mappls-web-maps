@@ -25,61 +25,88 @@ This feature is also available inbuilt with MapmyIndia Direction Plugin. For det
 
 Visit the following link for visiting the live demo:
 
-[LIVE DEMO](https://about.mappls.com/api/web-sdk/vector-plugin-example/Direction/mappls-event-alongtheroute-direction-plugin)
+Web sdk implementation : [Mappls Live Demo](https://about.mappls.com/api/web-sdk/vector-plugin-example/Direction/mappls-event-alongtheroute-direction-plugin)
+
+React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sandbox/mappls-route-summary-plugin-xy34dv?file=%2Fsrc%2FApp.js%3A1%2C1-76%2C1)
 
 ## Implementation
 
 ## React JS
 ```js
-import { mappls } from "mappls-web-maps";
-import { mappls_plugin } from "mappls-web-maps";
-function App() {
-  const styleMap = { width: "99%", height: "99vh", display: "inline-block" };
-  const mapProps = {
-    center: [28.633, 77.2194],
-    zoom: 9,
-  };
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-  var mapObject;
-  var mapplsClassObject = new mappls();
-  var mapplsPluginObject = new mappls_plugin();
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
+const RouteSummaryPlugin = ({ map }) => {
+  const routeSummaryRef = useRef(null);
 
-  const loadObject = {
-    map: true,
-    plugins: ["routeSummary"],
-  };
-
-  mapplsClassObject.initialize(
-    "<-----add token here--->",
-    loadObject,
-    () => {
-      mapObject = mapplsClassObject.Map({ id: "map", properties: mapProps });
-
-      //load map layers/components after map load, inside this callback (Recommended)
-      mapObject.on("load", () => {
-        // Activites after mapload
-        plugins();
-      });
+  useEffect(() => {
+    if (map && routeSummaryRef.current) {
+      mapplsClassObject.removeLayer({ map, layer: routeSummaryRef.current });
     }
-  );
 
-  function plugins() {
     let routeOptions = {
-      map: mapObject,
-      routeId: '967c0820-427d-11ee-b8b7-8f7e8832ea7b', // To get route id you need to call Direction With EventsAlongTheRoute get result in console
+      map: map,
+      routeId: "250aa832-9d94-11ee-9424-4515720cabdc", // To get route id you need to call Direction With EventsAlongTheRoute get result in console
       index: 0,
     };
-    mapplsPluginObject.routeSummary(routeOptions, callback_method);
+
+    routeSummaryRef.current = mapplsPluginObject.routeSummary(
+      routeOptions,
+      callback_method
+    );
     function callback_method(data) {
       console.log(data);
     }
-  }
+
+    return () => {
+      if (map && routeSummaryRef.current) {
+        mapplsClassObject.removeLayer({ map, layer: routeSummaryRef.current });
+      }
+    };
+  }, [map]);
+};
+
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  const loadObject = { map: true, plugins: ["routeSummary"] };
+
+  useEffect(() => {
+    mapplsClassObject.initialize("<Add your Token>", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+
+      mapRef.current = newMap;
+    });
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
 
   return (
-    <div id="map" style={styleMap}>
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded && <RouteSummaryPlugin map={mapRef.current} />}
     </div>
   );
-}
+};
+
 export default App;
 ```
 ## Angular
