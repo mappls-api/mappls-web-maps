@@ -16,7 +16,7 @@ Before using the Plugin in the your solution, please ensure that the related acc
     - `Access Token` can be generated using Token Generation API.
     - To know more on how to create your access tokens, please use our authorization API URL. More details available [here](https://about.mappls.com/api/advanced-maps/doc/authentication-api.php)
     - The `access token` is a valid by default for 24 hours from the time of generation. This can be configured by you in the API console.
-2. The sample codes are provided on our domain to help you understand the very basic functionality of Mappls PIN (eLoc) Plugin. [See Sample Codes here](https://github.com/mappls-api/mappls-web-plugins/tree/main/eLoc-plugin) 
+2. The sample codes are provided on our domain to help you understand the very basic functionality of Mappls PIN (eLoc) Plugin. [See Sample Codes here](https://about.mappls.com/api/web-sdk/vector-plugin-example/Placedetails/mappls-placedetails-plugin) 
 
 
 ## Document Version History
