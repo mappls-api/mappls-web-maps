@@ -98,67 +98,111 @@ npm  i  mappls-web-maps
 
 -  **Angular / Cordova / Ionic**
 
-	```js
-	import { Component, OnInit } from  '@angular/core';
-	import { mappls, mappls_plugin } from  'mappls-web-maps'
-	
-	@Component({
-	selector:  'app-root',
-	template  :  '<div  id="map"  style="width: 99%; height: 99vh; background-color: white;"></div>',
-	styleUrls: ['./app.component.css']
-	})
+```js
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { mappls, mappls_plugin } from 'mappls-web-maps';
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+  <div id="map" style="width: 100%; height: 97vh;">
+  </div>
+`,
+})
+export class AppComponent implements OnInit {
+  mapobject:any
+  mapplsClassObject:any= new mappls()
+  mapplsPluginObject:any= new mappls_plugin()
+  title = 'Map_angular';
 
-	export  class  AppComponent  implements  OnInit {
-	mapObject:  any;
-	mapplsClassObject =  new  mappls();
-	mapplsPluginObject =  new  mappls_plugin();
 
-	mapProps = { center: [28.6330, 77.2194], traffic:  false, zoom:  4, geolocation:  false, clickableIcons:  false }
+  ngOnInit() {
+    const loadObject = {
+      map: true,
+      layer: 'raster', // Optional Default Vector
+      version: '3.0', // Optional, other version 3.5 also available with CSP headers
+      libraries: ['airspacelayers'], // Optional for Polydraw and airspaceLayers
+      plugins: ['direction'], // Optional for any plugins
 
-		ngOnInit() {
-			this.mapplsClassObject.initialize("token",()=>{
-				this.mapObject  =  this.mapplsClassObject.Map({id:  "map", properties:  this.mapProps});
+    };
 
-				//load map layers/components after map load, inside this callback (Recommended)
-				this.mapObject.on("load", ()=>{
-				// Activites after mapload
-				})
-
-			});
-		}
-	```
+  this.mapplsClassObject.initialize(
+    '---------------Token------------------',
+    loadObject,
+    () => {
+      this.mapobject = this.mapplsClassObject.Map({
+        id: 'map',
+        properties: {
+          center: [28.61, 77.23],
+          zoomControl: true,
+          location: true,
+        },
+      });
+    }
+    
+  );
+  }
+}
+```
 
  -  **React JS**
 
-	```js
-	import { mappls, mappls_plugin} from  'mappls-web-maps';
-	function  App() {
-	const  styleMap  = {width:  '99%', height:  '99vh', display:'inline-block'}
-	const  mapProps  = { center: [28.6330, 77.2194], traffic:  false, zoom:  4, geolocation:  false, clickableIcons:  false }
-	var mapObject ;
-	var mapplsClassObject=  new  mappls();
-	var mapplsPluginObject =  new  mappls_plugin();
+```js
+import { mappls, mappls_plugin } from "mappls-web-maps";
+import { useEffect, useRef, useState } from "react";
 
-		mapplsClassObject.initialize("token",()=>{
-			mapObject = mapplsClassObject.Map({id:  "map", properties: mapProps});
-
-			//load map layers/components after map load, inside this callback (Recommended)
-			mapObject.on("load", ()=>{
-			// Activites after mapload
-			})
-
-		});
+const mapplsClassObject = new mappls();
+const mapplsPluginObject = new mappls_plugin();
 
 
+const App = () => {
+  const mapRef = useRef(null);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
 
-	return (
-	<div>
-	<div  id="map"  style={styleMap}></div>
-	</div>
-	);
-	}
-	export  default  App;
-	```
+  const loadObject = { 
+    map: true, 
+    layer: 'raster', // Optional Default Vector
+    version: '3.0', // // Optional, other version 3.5 also available with CSP headers
+    libraries: ['polydraw'], //Optional for Polydraw and airspaceLayers
+    plugins:['direction'] // Optional for All the plugins
+};
+
+  useEffect(() => {
+    mapplsClassObject.initialize("--------Token-------", loadObject, () => {
+      const newMap = mapplsClassObject.Map({
+        id: "map",
+        properties: {
+          center: [28.633, 77.2194],
+          zoom: 4,
+        },
+      });
+
+      newMap.on("load", () => {
+        setIsMapLoaded(true);
+      });
+      mapRef.current = newMap;
+    });
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+      }
+    };
+  }, []);
+
+  return (
+    <div
+      id="map"
+      style={{ width: "100%", height: "99vh", display: "inline-block" }}
+    >
+      {isMapLoaded}
+    </div>
+  );
+};
+
+export default App;
+```
 
 
 
