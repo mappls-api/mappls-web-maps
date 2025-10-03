@@ -125,6 +125,7 @@ export class AppComponent implements OnInit {
       version: '3.0', // Optional, other version 3.5 also available with CSP headers
       libraries: ['airspacelayers'], // Optional for Polydraw and airspaceLayers
       plugins: ['direction'], // Optional for any plugins
+      //auth:'legacy' /*Use only when you have legacy mappls token*/ 
 
     };
 
