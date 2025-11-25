@@ -1,4 +1,4 @@
-[<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://www.mapmyindia.com/api)
+[<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://about.mappls.com/api)
 
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova
@@ -25,7 +25,7 @@ Important Notes to remember
 ```js
 this.kmlObject = this.mapplsClassObject.KmlLayer({
 map:this.mapObject,
-url:"https://www.mapmyindia.com/api/advanced-maps/doc/sample/mmi.kml",
+url:"https://about.mappls.com/api/advanced-maps/doc/sample/mmi.kml",
 cType:0,
 fitbounds:true,
 fitboundOptions: {padding:  120,duration:1000}
@@ -240,7 +240,7 @@ const KmlComponent = ({ map }) => {
     }
     kmlRef.current = mapplsClassObject.KmlLayer({
       map: map,
-      url: "https://www.mapmyindia.com/api/advanced-maps/doc/sample/mmi.kml",
+      url: "https://about.mappls.com/api/advanced-maps/doc/sample/mmi.kml",
       cType: 1,
       fitbounds: true,
       fitboundOptions: { padding: 120, duration: 1000 },
@@ -307,7 +307,7 @@ var mixjson = {
       properties: {
         name: "MapmyIndia old Office",
         description: "Okhla delhi",
-        icon: "https://apis.mapmyindia.com/map_v3/1.png",
+        icon: "https://apis.mappls.com/map_v3/1.png",
         "icon-size": 1,
         text: "",
         "text-size": 20,
@@ -324,7 +324,7 @@ var mixjson = {
       properties: {
         name: '<div onclick="function1()">MapmyIndia New Office</div>',
         description: "68,Okhla delhi",
-        icon: "https://apis.mapmyindia.com/map_v3/1.png",
+        icon: "https://apis.mappls.com/map_v3/1.png",
         "icon-size": 0.55,
         text: "1",
         "icon-offset": [0, -20],
@@ -443,18 +443,18 @@ For any queries and support, please contact:
 Email us at [apisupport@mappls.com](mailto:apisupport@mappls.com)
 
 
-![](https://www.mapmyindia.com/api/img/icons/support.png)
+![](https://about.mappls.com/api/img/icons/support.png)
 [Support](https://about.mappls.com/contact/)
 Need support? contact us!
 
 <br></br>
 <br></br>
 
-[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mappls-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](https://about.mappls.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/Mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
+[<p align="center"> <img src="https://about.mappls.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mappls-api)[![](https://about.mappls.com/api/img/icons/blog.png)](https://about.mappls.com/blog/)[![](https://about.mappls.com/api/img/icons/gethub.png)](https://github.com/Mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
 
-[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/Mapplsofficial)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/mappls)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mappls/)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/channel/UCAWvWsh-dZLLeUU7_J9HiOA)
+[<p align="center"> <img src="https://about.mappls.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/Mapplsofficial)[![](https://about.mappls.com/june-newsletter/icon2.png)](https://twitter.com/mappls)[![](https://about.mappls.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mappls/)[![](https://about.mappls.com/june-newsletter/icon3.png)](https://www.youtube.com/channel/UCAWvWsh-dZLLeUU7_J9HiOA)
 
 
 
