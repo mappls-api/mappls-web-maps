@@ -33,7 +33,7 @@ React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sand
       padding:  120, 
       duration:  1000 
     }, //fitbound options
-  icon:  'https://apis.mapmyindia.com/map_v3/2.png', // icon url or Path
+  icon:  'https://apis.mappls.com/map_v3/2.png', // icon url or Path
   width:  25, // marker's icon width
   height:  40, // marker's icon heigh
   clusters:  true, //clusters of marker when zoomed out
@@ -59,12 +59,12 @@ React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sand
   - **Angular / Cordova / Ionic**
     ```js
     this.markerObject.setPosition({lat:28.454,lng:77.5454});
-    this.markerObject.setIcon("https://apis.mapmyindia.com/map_v3/1.png");
+    this.markerObject.setIcon("https://apis.mappls.com/map_v3/1.png");
     ```
   - **React js**
     ```js
     markerObject.setPosition({lat:28.454,lng:77.5454});
-    markerObject.setIcon("https://apis.mapmyindia.com/map_v3/1.png");
+    markerObject.setIcon("https://apis.mappls.com/map_v3/1.png");
     ```
 -  `setIcon`: Setting the URL of the icon. It replaces the icon URL.
 -  `setDraggable`: To make the marker draggable.
