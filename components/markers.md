@@ -1,4 +1,4 @@
-[<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://www.mapmyindia.com/api)
+[<img src="https://about.mappls.com/images/mappls-b-logo.svg" height="60"/> </p>](https://about.mappls.com/api)
   
 
 # Mappls Web Maps - For Angular/ Ionic / Cordova  
@@ -147,7 +147,7 @@ this.markerObject = this.mapplsClassObject.marker(
   {
     map:this.mapObject,
     position:geoData,
-    icon:'https://apis.mapmyindia.com/map_v3/1.png',
+    icon:'https://apis.mappls.com/map_v3/1.png',
     clusters:true,
     fitbounds:true,
     fitboundOptions:
@@ -177,7 +177,7 @@ var  geoData=
         "properties":
           {
             "description":"noida",
-            "icon":"https://apis.mapmyindia.com/map_v3/1.png",
+            "icon":"https://apis.mappls.com/map_v3/1.png",
             "icon-size":.75,
             "icon-offset":[0,-10],
             "text":"1",
@@ -195,7 +195,7 @@ var  geoData=
         "properties": 
           {
             "description":"faridabad",
-            "icon":"https://apis.mapmyindia.com/map_v3/1.png"
+            "icon":"https://apis.mappls.com/map_v3/1.png"
           },
         "geometry": 
           {
@@ -208,7 +208,7 @@ var  geoData=
         "properties": 
           {
             "description":"delhi",
-            "icon":"https://apis.mapmyindia.com/map_v3/1.png"
+            "icon":"https://apis.mappls.com/map_v3/1.png"
           },
         "geometry": 
           {
@@ -271,7 +271,7 @@ const PolylineComponent = ({ map }) => {
         icon_width: 25, // or as “25”
         icon_height: 50, // or as “50”,
         icon_url:
-          "http://www.mapmyindia.com/api/advanced-maps/doc/sample/map_sdk/car.png", //Place your icon url
+          "http://about.mappls.com/api/advanced-maps/doc/sample/map_sdk/car.png", //Place your icon url
         repeat: false, //false,
       },
     });
@@ -321,18 +321,18 @@ For any queries and support, please contact:
 Email us at [apisupport@mappls.com](mailto:apisupport@mappls.com)
 
 
-![](https://www.mapmyindia.com/api/img/icons/support.png)
+![](https://about.mappls.com/api/img/icons/support.png)
 [Support](https://about.mappls.com/contact/)
 Need support? contact us!
 
 <br></br>
 <br></br>
 
-[<p align="center"> <img src="https://www.mapmyindia.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mappls-api)[![](https://www.mapmyindia.com/api/img/icons/blog.png)](https://about.mappls.com/blog/)[![](https://www.mapmyindia.com/api/img/icons/gethub.png)](https://github.com/Mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
+[<p align="center"> <img src="https://about.mappls.com/api/img/icons/stack-overflow.png"/> ](https://stackoverflow.com/questions/tagged/mappls-api)[![](https://about.mappls.com/api/img/icons/blog.png)](https://about.mappls.com/blog/)[![](https://about.mappls.com/api/img/icons/gethub.png)](https://github.com/Mappls-api)[<img src="https://mmi-api-team.s3.ap-south-1.amazonaws.com/API-Team/npm-logo.one-third%5B1%5D.png" height="40"/> </p>](https://www.npmjs.com/org/mapmyindia) 
 
 
 
-[<p align="center"> <img src="https://www.mapmyindia.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/Mapplsofficial)[![](https://www.mapmyindia.com/june-newsletter/icon2.png)](https://twitter.com/mappls)[![](https://www.mapmyindia.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mappls/)[![](https://www.mapmyindia.com/june-newsletter/icon3.png)](https://www.youtube.com/channel/UCAWvWsh-dZLLeUU7_J9HiOA)
+[<p align="center"> <img src="https://about.mappls.com/june-newsletter/icon4.png"/> ](https://www.facebook.com/Mapplsofficial)[![](https://about.mappls.com/june-newsletter/icon2.png)](https://twitter.com/mappls)[![](https://about.mappls.com/newsletter/2017/aug/llinkedin.png)](https://www.linkedin.com/company/mappls/)[![](https://about.mappls.com/june-newsletter/icon3.png)](https://www.youtube.com/channel/UCAWvWsh-dZLLeUU7_J9HiOA)
 
 
 
