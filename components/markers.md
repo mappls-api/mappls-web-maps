@@ -13,14 +13,14 @@ React JS Implementation Live Video : [CodeSandbox](https://codesandbox.io/p/sand
 ###  1.  Adding a Marker
 - **Angular / Cordova / Ionic**
   ```js
-  this.markerObject = this.mapplsClassObject.marker({
+  this.markerObject = this.mapplsClassObject.Marker({
   map:  this.mapObject,
   position:{lat:28.5512908, lng:77.26809282},
   });
   ```
 - **React js**
   ```js
-  markerObject = mapplsClassObject.marker({
+  markerObject = mapplsClassObject.Marker({
   map:  mapObject,
   position:{lat:28.5512908, lng:77.26809282},
   });
@@ -143,7 +143,7 @@ var  geoData=
   ]
 };
 
-this.markerObject = this.mapplsClassObject.marker(
+this.markerObject = this.mapplsClassObject.Marker(
   {
     map:this.mapObject,
     position:geoData,
