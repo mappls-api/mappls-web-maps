@@ -14,11 +14,11 @@ Create your own **Angular/React/Ionic/Cordova Based native app** powered by Mapp
 
 # Sign up for Mappls
 
-Not a mappls user yet? [Sign up](https://apis.mappls.com/console/) for an account here. Once you’re signed in, all you need to start building is a mappls key. You can create and manage your access tokens on your Mappls Account page.
+Not a mappls user yet? [Sign up](https://auth.mappls.com/console/) for an account here. Once you’re signed in, all you need to start building is a mappls key. You can create and manage your access tokens on your Mappls Account page.
 
 ## API Usage
 
-Your MapmyIndia Maps SDK usage needs a set of license keys ([get them here ](https://apis.mappls.com/console/)) and is governed by the API terms and conditions. As part of the terms and conditions, you cannot remove or hide the MapmyIndia logo and copyright information in your project. Please see branding guidelines on MapmyIndia website for more details. The allowed hits are described on the plans page. Note that your usage is shared between platforms, so the API hits you make from a web application, Android app or an iOS app all add up to your allowed daily limit.
+Your MapmyIndia Maps SDK usage needs a set of license keys ([get them here ](https://auth.mappls.com/console/)) and is governed by the API terms and conditions. As part of the terms and conditions, you cannot remove or hide the MapmyIndia logo and copyright information in your project. Please see branding guidelines on MapmyIndia website for more details. The allowed hits are described on the plans page. Note that your usage is shared between platforms, so the API hits you make from a web application, Android app or an iOS app all add up to your allowed daily limit.
 
 ## Version History
 
