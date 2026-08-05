@@ -9,12 +9,12 @@ Powered with India's most comprehensive and robust mapping functionalities. Now 
 
 ## Getting Access
 
-Before using the Plugin in the your solution, please ensure that the related access is enabled in the [Mappls Console](https://apis.mappls.com/console/), in the same project you set up for the Maps SDK.
+Before using the Plugin in the your solution, please ensure that the related access is enabled in the [Mappls Console](https://auth.mappls.com/console/), in the same project you set up for the Maps SDK.
 
-1. Copy and paste the generated `access token` from your API [keys](https://apis.mappls.com/console/) available in the dashboard in the sample code for interactive map development.
+1. Copy and paste the generated `access token` from your API [keys](https://auth.mappls.com/console/) available in the dashboard in the sample code for interactive map development.
     - This APIs follow OAuth2 based security.
     - `Access Token` can be generated using Token Generation API.
-    - To know more on how to create your access tokens, please use our authorization API URL. More details available [here](https://about.mappls.com/api/advanced-maps/doc/authentication-api.php)
+    - To know more on how to create your access tokens, please use our authorization API URL. More details available [here](https://auth.mappls.com/console/)
     - The `access token` is a valid by default for 24 hours from the time of generation. This can be configured by you in the API console.
 2. The sample codes are provided on our domain to help you understand the very basic functionality of Mappls Place Search Plugin. [See Sample Codes here](https://about.mappls.com/api/web-sdk/vector-plugin-example/Placesearch/mappls-placesearch-plugin)
 
